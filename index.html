@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Githinji - Portfolio</title>
+
+    <!-- Tailwind CSS Script -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome & Google Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind Config Initialization -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        darkbg: '#050505',
+                        cardbg: 'rgba(255, 255, 255, 0.03)',
+                        cardborder: 'rgba(255, 255, 255, 0.08)',
+                    },
+                    animation: {
+                        'fadeInUp': 'fadeInUp 1s ease-out forwards',
+                        'fadeInDown': 'fadeInDown 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-card {
+                @apply bg-cardbg border border-cardborder backdrop-blur-md rounded-2xl;
+            }
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Ambient Glowing Orbs */
+        .bg-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            top: -200px;
+            left: -200px;
+            z-index: -1;
+            filter: blur(50px);
+            pointer-events: none;
+        }
+        
+        .bg-glow-2 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 40%;
+            right: -150px;
+            z-index: -1;
+            filter: blur(50px);
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-darkbg text-white font-sans antialiased overflow-x-hidden selection:bg-violet-500 selection:text-white relative">
+
+    <!-- Ambient Lighting Effects -->
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
+
+        <!-- Navigation -->
+        <nav class="flex justify-between items-center py-8 opacity-0 animate-[fadeInDown_1s_ease-out_forwards]">
+            <div
+                class="text-3xl font-extrabold bg-gradient-to-r from-violet-400 to-blue-500 bg-clip-text text-transparent tracking-tight">
+                KG.
+            </div>
+            <a href="mailto:your.email@example.com"
+                class="px-5 py-2.5 rounded-full glass-card hover:bg-white/5 border-transparent hover:border-violet-500/50 transition-all duration-300 flex items-center gap-2 text-sm font-medium group">
+                <i class="fas fa-paper-plane text-violet-400 group-hover:text-violet-300 transition-colors"></i>
+                Get in touch
+            </a>
+        </nav>
+
+        <!-- Hero Header -->
+        <header class="mt-20 mb-32 opacity-0 animate-[fadeInUp_1s_ease-out_forwards] delay-100">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-sm font-semibold mb-8 tracking-wide shadow-[0_0_15px_rgba(139,92,246,0.15)]">
+                <i class="fas fa-code"></i> Aspiring Full-Stack Developer & UI/UX Designer
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 tracking-tight">
+                Hi, I'm <br>
+                <span
+                    class="bg-gradient-to-r from-violet-400 via-indigo-400 to-blue-500 bg-clip-text text-transparent drop-shadow-sm">Kevin
+                    Githinji</span>
+            </h1>
+
+            <p class="text-zinc-400 text-xl font-light max-w-2xl leading-relaxed">
+                I have a strong passion for building clean, user-friendly applications. Alongside my development
+                journey, I have hands-on experience in IT Support and Networking Basics. I am currently developing my
+                skills in real-world projects and looking for an internship opportunity where I can learn, grow, and
+                contribute.
+            </p>
+        </header>
+
+        <!-- Education -->
+        <section class="mb-24 reveal">
+            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">
+                Education
+                <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
+            </h2>
+            <div class="glass-card p-8 md:p-10 group hover:border-violet-500/40 relative overflow-hidden transition-all duration-500 shadow-lg">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                <div class="relative z-10 flex flex-col md:flex-row gap-8 items-start">
+                    <div class="w-16 h-16 rounded-2xl bg-violet-500/10 border border-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 shadow-inner hidden md:flex">
+                        <i class="fas fa-graduation-cap text-3xl"></i>
+                    </div>
+                    <div class="flex-1 w-full">
+                        <div class="flex flex-col md:flex-row justify-between md:items-start gap-4 mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white flex items-center gap-3">
+                                    <i class="fas fa-graduation-cap text-violet-400 md:hidden"></i>
+                                    Murang’a University of Technology
+                                </h3>
+                                <p class="text-xl text-violet-300 mt-2 font-medium">Bachelor of Science in Information Technology</p>
+                            </div>
+                            <div class="px-4 py-2 bg-white/5 rounded-full border border-white/10 text-sm font-semibold text-zinc-300 shrink-0 self-start">
+                                Expected 2026
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 rounded-2xl bg-black/20 border border-white/5">
+                            <h4 class="text-lg font-semibold mb-4 text-zinc-200">Relevant Coursework:</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex items-start gap-3 text-zinc-400">
+                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1"></i> Software Development
+                                </div>
+                                <div class="flex items-start gap-3 text-zinc-400">
+                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1"></i> Database Management Systems
+                                </div>
+                                <div class="flex items-start gap-3 text-zinc-400">
+                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1"></i> Object-oriented programming
+                                </div>
+                                <div class="flex items-start gap-3 text-zinc-400">
+                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1"></i> Web & Mobile Application Development
+                                </div>
+                                <div class="flex items-start gap-3 text-zinc-400">
+                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1"></i> Data Structures & Algorithms
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="mb-24 reveal">
+            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">
+                Technical Skills
+                <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Programming Languages -->
+                <div class="glass-card p-6 border-transparent hover:bg-violet-500/10 hover:border-violet-500/30 transition-all duration-300 shadow-sm hover:-translate-y-1">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 text-xl shadow-inner">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-zinc-200">Programming Languages</h3>
+                    </div>
+                    <p class="text-zinc-400 leading-relaxed">Python, C++, JavaScript</p>
+                </div>
+
+                <!-- Web Technologies -->
+                <div class="glass-card p-6 border-transparent hover:bg-orange-500/10 hover:border-orange-500/30 transition-all duration-300 shadow-sm hover:-translate-y-1">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 text-xl shadow-inner">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-zinc-200">Web Technologies</h3>
+                    </div>
+                    <p class="text-zinc-400 leading-relaxed">HTML, CSS, JS</p>
+                </div>
+
+                <!-- Database Management -->
+                <div class="glass-card p-6 border-transparent hover:bg-blue-500/10 hover:border-blue-500/30 transition-all duration-300 shadow-sm hover:-translate-y-1">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-xl shadow-inner">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-zinc-200">Database Management</h3>
+                    </div>
+                    <p class="text-zinc-400 leading-relaxed">MySQL</p>
+                </div>
+
+                <!-- Version Control -->
+                <div class="glass-card p-6 border-transparent hover:bg-red-500/10 hover:border-red-500/30 transition-all duration-300 shadow-sm hover:-translate-y-1">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 text-xl shadow-inner">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-zinc-200">Version Control</h3>
+                    </div>
+                    <p class="text-zinc-400 leading-relaxed">Git, GitHub</p>
+                </div>
+
+                <!-- Development Tools -->
+                <div class="glass-card p-6 border-transparent hover:bg-sky-500/10 hover:border-sky-500/30 transition-all duration-300 shadow-sm hover:-translate-y-1">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 text-xl shadow-inner">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-zinc-200">Development Tools</h3>
+                    </div>
+                    <p class="text-zinc-400 leading-relaxed">Visual Studio Code, IntelliJ, Eclipse</p>
+                </div>
+
+                <!-- Methodologies -->
+                <div class="glass-card p-6 border-transparent hover:bg-pink-500/10 hover:border-pink-500/30 transition-all duration-300 shadow-sm hover:-translate-y-1">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 text-xl shadow-inner">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-zinc-200">Software Methodologies</h3>
+                    </div>
+                    <p class="text-zinc-400 leading-relaxed">Agile, Scrum</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects -->
+        <section class="mb-24 reveal">
+            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">
+                Featured Projects
+                <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
+            </h2>
+
+            <div class="space-y-8">
+                <!-- Murang'a Farmers Support System -->
+                <div
+                    class="glass-card p-8 md:p-10 group hover:border-violet-500/40 relative overflow-hidden transition-all duration-500 shadow-lg">
+                    <div
+                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-8 items-start">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-4">Murang'a Farmers Support System</h3>
+
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
+                                        class="fab fa-php text-indigo-400"></i> PHP</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
+                                        class="fas fa-database text-blue-400"></i> MySQL</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
+                                        class="fab fa-html5 text-orange-400"></i> HTML/CSS</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
+                                        class="fab fa-js text-yellow-300"></i> JS</span>
+                            </div>
+
+                            <p class="text-zinc-400 mb-8 leading-relaxed">
+                                A comprehensive platform bridging the gap between farmers and agricultural support
+                                services. Features intuitive dashboards and seamless data management.
+                            </p>
+
+                            <div class="mb-8 p-6 rounded-2xl bg-black/20 border border-white/5">
+                                <h4 class="text-lg font-semibold mb-4 text-violet-300">Key Achievements & Learnings:
+                                </h4>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-4 text-zinc-300">
+                                        <div
+                                            class="w-6 h-6 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 mt-0.5">
+                                            <i class="fas fa-check text-xs"></i>
+                                        </div>
+                                        <span>Built a real-world system entirely from scratch</span>
+                                    </li>
+                                    <li class="flex items-start gap-4 text-zinc-300">
+                                        <div
+                                            class="w-6 h-6 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 mt-0.5">
+                                            <i class="fas fa-check text-xs"></i>
+                                        </div>
+                                        <span>Designed user-friendly, responsive dashboards</span>
+                                    </li>
+                                    <li class="flex items-start gap-4 text-zinc-300">
+                                        <div
+                                            class="w-6 h-6 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 mt-0.5">
+                                            <i class="fas fa-check text-xs"></i>
+                                        </div>
+                                        <span>Robust backend integration using PHP & MySQL</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <a href="https://github.com/Kevin-Githinji/Muranga-farmers-suppport" target="_blank"
+                                class="inline-flex items-center gap-2 text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/50 px-6 py-3 rounded-xl font-medium transition-all duration-300 group/link shadow-sm">
+                                <i
+                                    class="fab fa-github text-xl text-zinc-300 group-hover/link:text-white transition-colors"></i>
+                                View Repository
+                                <i
+                                    class="fas fa-arrow-right text-sm ml-1 text-violet-400 group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kelmas Project -->
+                <div
+                    class="glass-card p-8 md:p-10 group hover:border-violet-500/40 relative overflow-hidden transition-all duration-500 shadow-lg">
+                    <div
+                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-8 items-start">
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-3 mb-4">
+                                <h3 class="text-2xl font-bold">Kelmas Website</h3>
+                                <span
+                                    class="px-3 py-1 bg-violet-500/10 text-violet-300 text-xs font-semibold rounded-full border border-violet-500/30 shadow-[0_0_10px_rgba(139,92,246,0.1)]">Solo
+                                    Work</span>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
+                                        class="fab fa-php text-indigo-400"></i> PHP</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
+                                        class="fab fa-html5 text-orange-400"></i> HTML/CSS</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
+                                        class="fab fa-js text-yellow-300"></i> JS</span>
+                            </div>
+
+                            <p class="text-zinc-400 mb-8 leading-relaxed">
+                                An independent full-stack web project demonstrating end-to-end development capabilities,
+                                from UI design to backend logic execution.
+                            </p>
+
+                            <div class="mb-8 p-6 rounded-2xl bg-black/20 border border-white/5">
+                                <h4 class="text-lg font-semibold mb-4 text-violet-300">Key Achievements & Learnings:
+                                </h4>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-4 text-zinc-300">
+                                        <div
+                                            class="w-6 h-6 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 mt-0.5">
+                                            <i class="fas fa-check text-xs"></i>
+                                        </div>
+                                        <span>Owned the complete development lifecycle independently</span>
+                                    </li>
+                                    <li class="flex items-start gap-4 text-zinc-300">
+                                        <div
+                                            class="w-6 h-6 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 mt-0.5">
+                                            <i class="fas fa-check text-xs"></i>
+                                        </div>
+                                        <span>Strengthened problem-solving skills in isolation</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <a href="https://github.com/Kevin-Githinji/Kelmas" target="_blank"
+                                class="inline-flex items-center gap-2 text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/50 px-6 py-3 rounded-xl font-medium transition-all duration-300 group/link shadow-sm">
+                                <i
+                                    class="fab fa-github text-xl text-zinc-300 group-hover/link:text-white transition-colors"></i>
+                                View Repository
+                                <i
+                                    class="fas fa-arrow-right text-sm ml-1 text-violet-400 group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pharmaceutical MIS -->
+                <div
+                    class="glass-card p-8 md:p-10 group hover:border-blue-500/40 relative overflow-hidden transition-all duration-500 shadow-lg">
+                    <div
+                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-sky-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-8 items-start">
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-3 mb-4">
+                                <h3 class="text-2xl font-bold">Pharmaceutical MIS</h3>
+                                <span
+                                    class="px-3 py-1 bg-blue-500/10 text-blue-300 text-xs font-semibold rounded-full border border-blue-500/30 shadow-[0_0_10px_rgba(59,130,246,0.1)]">Group
+                                    Work</span>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><span
+                                        class="bg-blue-500 text-white text-[9px] font-bold px-1 rounded-sm">TS</span>
+                                    TypeScript</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
+                                        class="fab fa-python text-yellow-400"></i> Python</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
+                                        class="fab fa-html5 text-orange-400"></i> HTML/CSS</span>
+                            </div>
+
+                            <p class="text-zinc-400 mb-8 leading-relaxed">
+                                A collaboratively built Management Information System tailored for pharmaceutical
+                                operations, featuring modern tech stacks and structured architectures.
+                            </p>
+
+                            <div class="mb-8 p-6 rounded-2xl bg-black/20 border border-white/5">
+                                <h4 class="text-lg font-semibold mb-4 text-blue-300">Key Achievements & Learnings:</h4>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-4 text-zinc-300">
+                                        <div
+                                            class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
+                                            <i class="fas fa-check text-xs"></i>
+                                        </div>
+                                        <span>Gained practical experience in collaborative Git workflows</span>
+                                    </li>
+                                    <li class="flex items-start gap-4 text-zinc-300">
+                                        <div
+                                            class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
+                                            <i class="fas fa-check text-xs"></i>
+                                        </div>
+                                        <span>Successfully integrated diverse language stacks (TypeScript &
+                                            Python)</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <a href="https://github.com/Kevin-Githinji/pharmaceutical_MIS" target="_blank"
+                                class="inline-flex items-center gap-2 text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/50 px-6 py-3 rounded-xl font-medium transition-all duration-300 group/link shadow-sm">
+                                <i
+                                    class="fab fa-github text-xl text-zinc-300 group-hover/link:text-white transition-colors"></i>
+                                View Repository
+                                <i
+                                    class="fas fa-arrow-right text-sm ml-1 text-blue-400 group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Duo Layout: Goals & Strengths -->
+        <div class="grid md:grid-cols-2 gap-8 mb-24">
+
+            <!-- Goals Box -->
+            <section class="reveal">
+                <h2 class="text-3xl font-bold mb-8 flex items-center gap-4">
+                    What I'm Looking For
+                    <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
+                </h2>
+
+                <div class="glass-card p-8 h-[calc(100%-4rem)] border-t border-t-blue-500/20">
+                    <ul class="space-y-8">
+                        <li class="flex gap-5 items-center">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 shadow-inner">
+                                <i class="fas fa-laptop-code text-2xl"></i>
+                            </div>
+                            <span class="text-zinc-200 font-medium text-lg leading-snug">Internship in Web Development
+                                or UI/UX Design</span>
+                        </li>
+                        <li class="flex gap-5 items-center">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 shadow-inner">
+                                <i class="fas fa-user-graduate text-2xl"></i>
+                            </div>
+                            <span class="text-zinc-200 font-medium text-lg leading-snug">Mentorship and valuable
+                                real-world experience</span>
+                        </li>
+                        <li class="flex gap-5 items-center">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 shadow-inner">
+                                <i class="fas fa-rocket text-2xl"></i>
+                            </div>
+                            <span class="text-zinc-200 font-medium text-lg leading-snug">Opportunity to contribute to
+                                live projects</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Strengths Box -->
+            <section class="reveal">
+                <h2 class="text-3xl font-bold mb-8 flex items-center gap-4">
+                    My Strengths
+                    <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
+                </h2>
+
+                <div class="glass-card p-8 h-[calc(100%-4rem)] border-t border-t-violet-500/20">
+                    <ul class="space-y-6">
+                        <li class="flex gap-5 items-center">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-violet-500/10 text-violet-400 flex items-center justify-center shrink-0">
+                                <i class="fas fa-bolt text-xl"></i>
+                            </div>
+                            <span class="text-zinc-300 font-medium">Fast and adaptive learner</span>
+                        </li>
+                        <li class="flex gap-5 items-center">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-violet-500/10 text-violet-400 flex items-center justify-center shrink-0">
+                                <i class="fas fa-eye text-xl"></i>
+                            </div>
+                            <span class="text-zinc-300 font-medium">Strong attention to detail & aesthetics</span>
+                        </li>
+                        <li class="flex gap-5 items-center">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-violet-500/10 text-violet-400 flex items-center justify-center shrink-0">
+                                <i class="fas fa-puzzle-piece text-xl"></i>
+                            </div>
+                            <span class="text-zinc-300 font-medium">Problem-solving mindset</span>
+                        </li>
+                        <li class="flex gap-5 items-center">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-violet-500/10 text-violet-400 flex items-center justify-center shrink-0">
+                                <i class="fas fa-users text-xl"></i>
+                            </div>
+                            <span class="text-zinc-300 font-medium">Excellent team collaboration</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Call To Action -->
+        <section class="reveal mb-12">
+            <div
+                class="glass-card p-12 md:p-16 text-center relative overflow-hidden bg-gradient-to-br from-violet-900/10 to-blue-900/10 border-violet-500/20 shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(139,92,246,0.1)]">
+                <div
+                    class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]">
+                </div>
+
+                <div class="relative z-10">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-violet-500/10 border border-violet-500/20 flex items-center justify-center mb-8 shadow-inner">
+                        <i class="fas fa-handshake text-3xl text-violet-400"></i>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Build Together</h2>
+                    <p class="text-zinc-400 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+                        I'm currently seeking an internship where I can bring value to a team while expanding my
+                        skillset. Let's start a conversation!
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+                        <a href="https://github.com/Kevin-Githinji" target="_blank"
+                            class="px-6 py-3.5 rounded-full bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 hover:bg-zinc-800 transition-all font-medium flex items-center justify-center gap-2">
+                            <i class="fab fa-github text-lg"></i> GitHub
+                        </a>
+                        <a href="https://linkedin.com/in/your-link" target="_blank"
+                            class="px-6 py-3.5 rounded-full bg-zinc-900 border border-zinc-800 hover:border-blue-500/50 hover:bg-zinc-800 transition-all font-medium flex items-center justify-center gap-2">
+                            <i class="fab fa-linkedin text-lg text-blue-400"></i> LinkedIn
+                        </a>
+                        <a href="tel:+254743661514"
+                            class="px-6 py-3.5 rounded-full bg-zinc-900 border border-zinc-800 hover:border-green-500/50 hover:bg-zinc-800 transition-all font-medium flex items-center justify-center gap-2">
+                            <i class="fas fa-phone-alt text-lg text-green-400"></i> Phone
+                        </a>
+                        <a href="mailto:kyvogithe@gmail.com"
+                            class="px-6 py-3.5 rounded-full bg-violet-600 hover:bg-violet-500 text-white shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.5)] transition-all font-medium flex items-center justify-center gap-2 transform hover:-translate-y-0.5">
+                            <i class="fas fa-envelope text-lg"></i> Email Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-10 text-center text-zinc-500 mt-20 relative z-10">
+            <div class="w-24 h-px bg-gradient-to-r from-transparent via-zinc-700 to-transparent mx-auto mb-8"></div>
+            <p>&copy; 2026 Kevin Githinji. Built with <i class="fas fa-heart text-violet-500/50 mx-1"></i> passion &
+                precision.</p>
+        </footer>
+
+    </div>
+
+    <!-- Scroll Reveal Logic -->
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 120; // Triggers slightly earlier
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Initial check
+        setTimeout(reveal, 100);
+    </script>
+</body>
+
+</html>
