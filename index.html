@@ -1,88 +1,65 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kevin Githinji — Aspiring IT Professional & Software Developer. BSc Information Technology student with hands-on experience in IT support, networking, and full-stack development.">
+    <meta name="description" content="Kevin Githinji — Full-Stack Developer & IT Support Specialist. Building modern, scalable web applications with great user experience.">
     <title>Kevin Githinji - Portfolio</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%237c3aed'/><text x='50' y='68' font-size='50' font-family='Arial' font-weight='bold' text-anchor='middle' fill='white'>KG</text></svg>">
-
-    <!-- Tailwind CSS Script -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- FontAwesome & Google Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- Tailwind Config Initialization -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                    },
-                    colors: {
-                        darkbg: '#050505',
-                        cardbg: 'rgba(255, 255, 255, 0.03)',
-                        cardborder: 'rgba(255, 255, 255, 0.08)',
-                    },
-                    animation: {
-                        'fadeInUp': 'fadeInUp 1s ease-out forwards',
-                        'fadeInDown': 'fadeInDown 1s ease-out forwards',
-                    },
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: { darkbg: '#050505', lightbg: '#f8fafc', cardbg: 'rgba(255,255,255,0.03)', cardborder: 'rgba(255,255,255,0.08)' },
+                    animation: { fadeInUp: 'fadeInUp 1s ease-out forwards', fadeInDown: 'fadeInDown 1s ease-out forwards' },
                     keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        fadeInDown: {
-                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
+                        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        fadeInDown: { '0%': { opacity: '0', transform: 'translateY(-20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } }
                     }
                 }
             }
         }
     </script>
-
-    <!-- Custom Styles -->
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .glass-card {
-                @apply bg-cardbg border border-cardborder backdrop-blur-md rounded-2xl;
-            }
-        }
-        
+    <style>
+        .glass-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(12px); border-radius: 1rem; }
+        .light .glass-card { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.08); }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .bg-glow { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%); top: -200px; left: -200px; z-index: -1; filter: blur(50px); pointer-events: none; }
-        .bg-glow-2 { position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%); top: 40%; right: -150px; z-index: -1; filter: blur(50px); pointer-events: none; }
-        
-        /* Sticky Nav */
-        .nav-sticky { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 1rem 0; box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+        .bg-glow { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%); top: -200px; left: -200px; z-index: -1; filter: blur(50px); pointer-events: none; }
+        .bg-glow-2 { position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%); top: 40%; right: -150px; z-index: -1; filter: blur(50px); pointer-events: none; }
+        .nav-sticky { position: fixed; top: 0; left: 0; right: 0; z-index: 50; backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 1rem 0; box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+        .dark .nav-sticky { background: rgba(5,5,5,0.85); }
+        .light .nav-sticky { background: rgba(248,250,252,0.9); border-color: rgba(0,0,0,0.06); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
         .nav-link { position: relative; }
         .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: linear-gradient(to right, #8b5cf6, #3b82f6); transition: width 0.3s; }
         .nav-link:hover::after { width: 100%; }
-        /* Back to top */
         .back-to-top { position: fixed; bottom: 2rem; right: 2rem; z-index: 50; opacity: 0; pointer-events: none; transition: all 0.3s; transform: translateY(10px); }
         .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
-        /* Mobile nav */
         .mobile-menu { display: none; }
         .mobile-menu.open { display: flex; }
-        /* Tech stack marquee */
         @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .tech-scroll { animation: scroll-left 25s linear infinite; }
         .tech-scroll:hover { animation-play-state: paused; }
+        .filter-btn.active { background: rgba(139,92,246,0.2); border-color: rgba(139,92,246,0.5); color: #c4b5fd; }
+        .light .filter-btn.active { background: rgba(139,92,246,0.1); color: #7c3aed; }
+        .project-card { transition: all 0.4s ease; }
+        .project-card.hidden-card { display: none; }
+        /* Light mode overrides */
+        .light { background: #f8fafc; color: #1e293b; }
+        .light .text-zinc-400 { color: #64748b; }
+        .light .text-zinc-300 { color: #475569; }
+        .light .text-zinc-200 { color: #334155; }
+        .light .text-white { color: #0f172a; }
+        .light .bg-glow, .light .bg-glow-2 { opacity: 0.3; }
     </style>
 </head>
+<body class="bg-darkbg dark text-white font-sans antialiased overflow-x-hidden selection:bg-violet-500 selection:text-white relative transition-colors duration-300">
 
-<body
-    class="bg-darkbg text-white font-sans antialiased overflow-x-hidden selection:bg-violet-500 selection:text-white relative">
-
-    <!-- Ambient Lighting Effects -->
     <div class="bg-glow"></div>
     <div class="bg-glow-2"></div>
 
@@ -90,82 +67,339 @@
 
         <!-- Navigation -->
         <nav id="main-nav" class="flex justify-between items-center py-8 opacity-0 animate-[fadeInDown_1s_ease-out_forwards] transition-all duration-300">
-            <a href="#" class="text-3xl font-extrabold bg-gradient-to-r from-violet-400 to-blue-500 bg-clip-text text-transparent tracking-tight">
-                KG.
-            </a>
+            <a href="#" class="text-3xl font-extrabold bg-gradient-to-r from-violet-400 to-blue-500 bg-clip-text text-transparent tracking-tight">KG.</a>
             <div class="hidden md:flex items-center gap-6">
-                <a href="#about" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">About</a>
-                <a href="#education" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Education</a>
-                <a href="#experience" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Experience</a>
-                <a href="#skills" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Skills</a>
                 <a href="#projects" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Projects</a>
-                <a href="mailto:kyvogithe@gmail.com"
-                    class="px-5 py-2.5 rounded-full glass-card hover:bg-white/5 border-transparent hover:border-violet-500/50 transition-all duration-300 flex items-center gap-2 text-sm font-medium group">
-                    <i class="fas fa-paper-plane text-violet-400 group-hover:text-violet-300 transition-colors"></i>
-                    Get in touch
+                <a href="#skills" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Skills</a>
+                <a href="#experience" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Experience</a>
+                <a href="#education" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Education</a>
+                <a href="#about" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">About</a>
+                <button id="theme-toggle" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 flex items-center justify-center transition-all" title="Toggle theme">
+                    <i class="fas fa-moon text-sm text-violet-400" id="theme-icon"></i>
+                </button>
+                <a href="mailto:kyvogithe@gmail.com" class="px-5 py-2.5 rounded-full glass-card hover:bg-white/5 border-transparent hover:border-violet-500/50 transition-all duration-300 flex items-center gap-2 text-sm font-medium group">
+                    <i class="fas fa-paper-plane text-violet-400 group-hover:text-violet-300 transition-colors"></i> Get in touch
                 </a>
             </div>
-            <button id="mobile-toggle" class="md:hidden text-zinc-400 hover:text-white text-xl p-2" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
-                <i class="fas fa-bars"></i>
-            </button>
+            <button id="mobile-toggle" class="md:hidden text-zinc-400 hover:text-white text-xl p-2" onclick="document.getElementById('mobile-menu').classList.toggle('open')"><i class="fas fa-bars"></i></button>
         </nav>
         <div id="mobile-menu" class="mobile-menu flex-col gap-4 pb-6 md:hidden">
-            <a href="#about" class="text-sm text-zinc-400 hover:text-white transition-colors font-medium py-2">About</a>
-            <a href="#education" class="text-sm text-zinc-400 hover:text-white transition-colors font-medium py-2">Education</a>
-            <a href="#experience" class="text-sm text-zinc-400 hover:text-white transition-colors font-medium py-2">Experience</a>
-            <a href="#skills" class="text-sm text-zinc-400 hover:text-white transition-colors font-medium py-2">Skills</a>
             <a href="#projects" class="text-sm text-zinc-400 hover:text-white transition-colors font-medium py-2">Projects</a>
-            <a href="mailto:kyvogithe@gmail.com" class="text-sm text-violet-400 hover:text-violet-300 transition-colors font-medium py-2"><i class="fas fa-paper-plane mr-2"></i>Get in touch</a>
+            <a href="#skills" class="text-sm text-zinc-400 hover:text-white transition-colors font-medium py-2">Skills</a>
+            <a href="#experience" class="text-sm text-zinc-400 hover:text-white transition-colors font-medium py-2">Experience</a>
+            <a href="#education" class="text-sm text-zinc-400 hover:text-white transition-colors font-medium py-2">Education</a>
+            <a href="#about" class="text-sm text-zinc-400 hover:text-white transition-colors font-medium py-2">About</a>
         </div>
 
-        <!-- Hero Header -->
-        <header class="mt-20 mb-32 opacity-0 animate-[fadeInUp_1s_ease-out_forwards] delay-100">
-            <div
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-sm font-semibold mb-8 tracking-wide shadow-[0_0_15px_rgba(139,92,246,0.15)]">
-                <i class="fas fa-code"></i> Aspiring IT Professional & Software Developer
+        <!-- Hero -->
+        <header class="mt-16 mb-28 opacity-0 animate-[fadeInUp_1s_ease-out_forwards]">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-sm font-semibold mb-8 tracking-wide shadow-[0_0_15px_rgba(139,92,246,0.15)]">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Open to opportunities
             </div>
-
-            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 tracking-tight">
-                Hi, I'm <br>
-                <span
-                    class="bg-gradient-to-r from-violet-400 via-indigo-400 to-blue-500 bg-clip-text text-transparent drop-shadow-sm">Kevin
-                    Githinji</span>
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-4 tracking-tight">
+                <span class="bg-gradient-to-r from-violet-400 via-indigo-400 to-blue-500 bg-clip-text text-transparent drop-shadow-sm">Kevin Githinji</span>
             </h1>
-
-            <p class="text-zinc-400 text-xl font-light max-w-2xl leading-relaxed mb-8">
-                I have a strong passion for technology—from conceptualizing clean, user-friendly full-stack applications to ensuring robust, secure networks and providing critical IT support. I am currently seeking an internship or full-time job opportunity where I can contribute my diverse skill set, grow as a professional, and create value.
+            <p class="text-xl md:text-2xl text-zinc-300 font-medium mb-6">Full-Stack Developer <span class="text-violet-400">|</span> IT Support Specialist</p>
+            <p class="text-zinc-400 text-lg font-light max-w-2xl leading-relaxed mb-10">
+                I build modern, scalable web applications with great user experience. Passionate about solving real-world problems using technology.
             </p>
-
-            <div class="flex gap-4">
-                <a href="assets/Kevin_Githinji_Resume.pdf" download
-                    class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-medium transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.5)] transform hover:-translate-y-0.5">
-                    <i class="fas fa-download"></i> Download Resume
-                </a>
-                <a href="#projects"
-                    class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/50 text-white font-medium transition-all duration-300 transform hover:-translate-y-0.5">
+            <div class="flex flex-wrap gap-4">
+                <a href="#projects" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-medium transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.5)] transform hover:-translate-y-0.5">
                     <i class="fas fa-folder-open"></i> View Projects
+                </a>
+                <a href="assets/Kevin_Githinji_Resume.pdf" download class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/50 text-white font-medium transition-all duration-300 transform hover:-translate-y-0.5">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+                <a href="#contact" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/50 text-white font-medium transition-all duration-300 transform hover:-translate-y-0.5">
+                    <i class="fas fa-envelope"></i> Contact Me
                 </a>
             </div>
         </header>
 
-        <!-- About Me -->
-        <section id="about" class="mb-24 reveal">
-            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">
-                About Me
-                <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
-            </h2>
+        <!-- ═══════════ FEATURED PROJECTS ═══════════ -->
+        <section id="projects" class="mb-28 reveal">
+            <h2 class="text-3xl font-bold mb-4 flex items-center gap-4">Featured Projects <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div></h2>
+            <p class="text-zinc-400 mb-8 text-sm">Real-world applications I've designed and built</p>
+
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap gap-3 mb-10">
+                <button class="filter-btn active px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-zinc-300 transition-all hover:bg-violet-500/10" data-filter="all">All Projects</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-zinc-300 transition-all hover:bg-violet-500/10" data-filter="web">Web Apps</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-zinc-300 transition-all hover:bg-violet-500/10" data-filter="system">Systems</button>
+            </div>
+
+            <div class="space-y-8" id="projects-grid">
+
+                <!-- Project 1: Farmers -->
+                <div class="project-card glass-card p-8 group hover:border-violet-500/40 relative overflow-hidden transition-all duration-500 shadow-lg" data-category="web">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="flex flex-col lg:flex-row gap-8">
+                        <div class="lg:w-2/5 rounded-xl overflow-hidden border border-white/10 shadow-lg">
+                            <img src="assets/projects/farmers-system.png" alt="Farmers Support System Dashboard" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-3 mb-3">
+                                <h3 class="text-2xl font-bold">Murang'a Farmers Support System</h3>
+                                <span class="px-3 py-1 bg-emerald-500/10 text-emerald-300 text-xs font-semibold rounded-full border border-emerald-500/30">⭐ Featured</span>
+                            </div>
+                            <p class="text-zinc-400 mb-4 leading-relaxed"><strong class="text-zinc-200">Problem:</strong> Farmers in Murang'a lacked a centralized platform to access agricultural support services and connect with local government officers.</p>
+                            <p class="text-zinc-400 mb-5 leading-relaxed"><strong class="text-zinc-200">Solution:</strong> Built a comprehensive web platform with role-based dashboards for farmers, officers, and administrators — enabling seamless registration, support ticketing, and data management.</p>
+                            <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i class="fab fa-php text-indigo-400"></i> PHP</span>
+                                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i class="fas fa-database text-blue-400"></i> MySQL</span>
+                                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i class="fab fa-html5 text-orange-400"></i> HTML/CSS</span>
+                                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i class="fab fa-js text-yellow-300"></i> JavaScript</span>
+                            </div>
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-violet-300 mb-2">Key Features:</h4>
+                                <div class="grid grid-cols-2 gap-2 text-sm text-zinc-400">
+                                    <span class="flex items-center gap-2"><i class="fas fa-check text-violet-500/80 text-xs"></i> Multi-role dashboards</span>
+                                    <span class="flex items-center gap-2"><i class="fas fa-check text-violet-500/80 text-xs"></i> Farmer registration</span>
+                                    <span class="flex items-center gap-2"><i class="fas fa-check text-violet-500/80 text-xs"></i> Support ticket system</span>
+                                    <span class="flex items-center gap-2"><i class="fas fa-check text-violet-500/80 text-xs"></i> Admin reporting</span>
+                                </div>
+                            </div>
+                            <a href="https://github.com/Kevin-Githinji/Muranga-farmers-suppport" target="_blank" class="inline-flex items-center gap-2 text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/50 px-5 py-2.5 rounded-xl font-medium transition-all group/link text-sm">
+                                <i class="fab fa-github text-lg text-zinc-300 group-hover/link:text-white transition-colors"></i> View on GitHub <i class="fas fa-arrow-right text-xs ml-1 text-violet-400 group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Kelmas -->
+                <div class="project-card glass-card p-8 group hover:border-violet-500/40 relative overflow-hidden transition-all duration-500 shadow-lg" data-category="web">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="flex flex-col lg:flex-row gap-8">
+                        <div class="lg:w-2/5 rounded-xl overflow-hidden border border-white/10 shadow-lg">
+                            <img src="assets/projects/kelmas-website.png" alt="Kelmas Website" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-3 mb-3">
+                                <h3 class="text-2xl font-bold">Kelmas Website</h3>
+                                <span class="px-3 py-1 bg-violet-500/10 text-violet-300 text-xs font-semibold rounded-full border border-violet-500/30">Solo Project</span>
+                            </div>
+                            <p class="text-zinc-400 mb-4 leading-relaxed"><strong class="text-zinc-200">Role:</strong> Sole developer — designed, built, and deployed the entire application independently from concept to completion.</p>
+                            <p class="text-zinc-400 mb-5 leading-relaxed">A full-stack web project demonstrating end-to-end development capabilities, from responsive UI design to backend logic and database integration.</p>
+                            <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i class="fab fa-php text-indigo-400"></i> PHP</span>
+                                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i class="fab fa-html5 text-orange-400"></i> HTML/CSS</span>
+                                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i class="fab fa-js text-yellow-300"></i> JavaScript</span>
+                            </div>
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-violet-300 mb-2">Key Features:</h4>
+                                <div class="grid grid-cols-2 gap-2 text-sm text-zinc-400">
+                                    <span class="flex items-center gap-2"><i class="fas fa-check text-violet-500/80 text-xs"></i> Responsive design</span>
+                                    <span class="flex items-center gap-2"><i class="fas fa-check text-violet-500/80 text-xs"></i> Full CRUD operations</span>
+                                    <span class="flex items-center gap-2"><i class="fas fa-check text-violet-500/80 text-xs"></i> Clean UI/UX</span>
+                                    <span class="flex items-center gap-2"><i class="fas fa-check text-violet-500/80 text-xs"></i> Backend integration</span>
+                                </div>
+                            </div>
+                            <a href="https://github.com/Kevin-Githinji/Kelmas" target="_blank" class="inline-flex items-center gap-2 text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/50 px-5 py-2.5 rounded-xl font-medium transition-all group/link text-sm">
+                                <i class="fab fa-github text-lg text-zinc-300 group-hover/link:text-white transition-colors"></i> View on GitHub <i class="fas fa-arrow-right text-xs ml-1 text-violet-400 group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Pharma MIS -->
+                <div class="project-card glass-card p-8 group hover:border-blue-500/40 relative overflow-hidden transition-all duration-500 shadow-lg" data-category="system">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-sky-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="flex flex-col lg:flex-row gap-8">
+                        <div class="lg:w-2/5 rounded-xl overflow-hidden border border-white/10 shadow-lg">
+                            <img src="assets/projects/pharma-mis.png" alt="Pharmaceutical MIS Dashboard" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-3 mb-3">
+                                <h3 class="text-2xl font-bold">Pharmaceutical MIS</h3>
+                                <span class="px-3 py-1 bg-blue-500/10 text-blue-300 text-xs font-semibold rounded-full border border-blue-500/30">Team Project</span>
+                            </div>
+                            <p class="text-zinc-400 mb-4 leading-relaxed"><strong class="text-zinc-200">Problem:</strong> Pharmaceutical operations needed a structured system for inventory tracking, prescription management, and sales reporting.</p>
+                            <p class="text-zinc-400 mb-5 leading-relaxed"><strong class="text-zinc-200">Role:</strong> Collaborated in a team using Git workflows, integrating TypeScript frontend with Python backend services.</p>
+                            <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><span class="bg-blue-500 text-white text-[9px] font-bold px-1 rounded-sm">TS</span> TypeScript</span>
+                                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i class="fab fa-python text-yellow-400"></i> Python</span>
+                                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i class="fab fa-html5 text-orange-400"></i> HTML/CSS</span>
+                            </div>
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-blue-300 mb-2">Key Features:</h4>
+                                <div class="grid grid-cols-2 gap-2 text-sm text-zinc-400">
+                                    <span class="flex items-center gap-2"><i class="fas fa-check text-blue-500/80 text-xs"></i> Inventory management</span>
+                                    <span class="flex items-center gap-2"><i class="fas fa-check text-blue-500/80 text-xs"></i> Multi-language stack</span>
+                                    <span class="flex items-center gap-2"><i class="fas fa-check text-blue-500/80 text-xs"></i> Sales reporting</span>
+                                    <span class="flex items-center gap-2"><i class="fas fa-check text-blue-500/80 text-xs"></i> Collaborative Git workflow</span>
+                                </div>
+                            </div>
+                            <a href="https://github.com/Kevin-Githinji/pharmaceutical_MIS" target="_blank" class="inline-flex items-center gap-2 text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/50 px-5 py-2.5 rounded-xl font-medium transition-all group/link text-sm">
+                                <i class="fab fa-github text-lg text-zinc-300 group-hover/link:text-white transition-colors"></i> View on GitHub <i class="fas fa-arrow-right text-xs ml-1 text-blue-400 group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ SKILLS ═══════════ -->
+        <section id="skills" class="mb-28 reveal">
+            <h2 class="text-3xl font-bold mb-4 flex items-center gap-4">Skills <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div></h2>
+            <p class="text-zinc-400 mb-10 text-sm">Technologies and tools I work with</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Frontend -->
+                <div class="glass-card p-6 hover:border-violet-500/30 transition-all duration-300 hover:-translate-y-1">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400"><i class="fas fa-palette"></i></div>
+                        <h3 class="text-lg font-bold">Frontend</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">HTML5</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">CSS3</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">JavaScript</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Tailwind CSS</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Responsive Design</span>
+                    </div>
+                </div>
+                <!-- Backend -->
+                <div class="glass-card p-6 hover:border-blue-500/30 transition-all duration-300 hover:-translate-y-1">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400"><i class="fas fa-server"></i></div>
+                        <h3 class="text-lg font-bold">Backend</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">PHP</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Python</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">TypeScript</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">MySQL</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">REST APIs</span>
+                    </div>
+                </div>
+                <!-- Tools -->
+                <div class="glass-card p-6 hover:border-emerald-500/30 transition-all duration-300 hover:-translate-y-1">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400"><i class="fas fa-tools"></i></div>
+                        <h3 class="text-lg font-bold">Tools & Platforms</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Git & GitHub</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">VS Code</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Linux</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Windows Server</span>
+                    </div>
+                </div>
+                <!-- IT & Networking -->
+                <div class="glass-card p-6 hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-1">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400"><i class="fas fa-network-wired"></i></div>
+                        <h3 class="text-lg font-bold">IT & Networking</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Cisco Packet Tracer</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Active Directory</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Help Desk Support</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Hardware Troubleshooting</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ EXPERIENCE ═══════════ -->
+        <section id="experience" class="mb-28 reveal">
+            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">Experience <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div></h2>
+            <div class="glass-card p-8 md:p-10 group hover:border-violet-500/40 relative overflow-hidden transition-all duration-500 shadow-lg">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative z-10 flex flex-col md:flex-row gap-8 items-start">
+                    <div class="w-16 h-16 rounded-2xl bg-violet-500/10 border border-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 shadow-inner hidden md:flex"><i class="fas fa-briefcase text-3xl"></i></div>
+                    <div class="flex-1 w-full">
+                        <div class="flex flex-col md:flex-row justify-between md:items-start gap-4 mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold flex items-center gap-3"><i class="fas fa-briefcase text-violet-400 md:hidden"></i> IT Support & Networking</h3>
+                                <p class="text-xl text-violet-300 mt-2 font-medium">Maragua Level 4 Hospital</p>
+                                <p class="text-sm text-zinc-400 mt-1 flex items-center gap-2"><i class="far fa-calendar-alt text-violet-400"></i> May 2025 – August 2025</p>
+                            </div>
+                            <div class="flex flex-col items-end gap-2">
+                                <div class="px-4 py-2 bg-white/5 rounded-full border border-white/10 text-sm font-semibold text-zinc-300">Industrial Attachment</div>
+                                <div class="px-3 py-1 bg-emerald-500/10 rounded-full border border-emerald-500/30 text-xs font-semibold text-emerald-300 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Available for hire</div>
+                            </div>
+                        </div>
+                        <div class="p-6 rounded-2xl bg-black/20 border border-white/5">
+                            <h4 class="text-lg font-semibold mb-4 text-zinc-200">Key Achievements:</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
+                                <div class="flex items-start gap-3 text-zinc-400"><i class="fas fa-check text-violet-500/80 text-sm mt-1.5 shrink-0"></i><div><strong class="text-zinc-300">Technical Support:</strong> Resolved 50+ hardware & software issues across 8 departments</div></div>
+                                <div class="flex items-start gap-3 text-zinc-400"><i class="fas fa-check text-violet-500/80 text-sm mt-1.5 shrink-0"></i><div><strong class="text-zinc-300">HIS Support:</strong> Managed EMR for 200+ daily patient records with 99% accuracy</div></div>
+                                <div class="flex items-start gap-3 text-zinc-400"><i class="fas fa-check text-violet-500/80 text-sm mt-1.5 shrink-0"></i><div><strong class="text-zinc-300">Network Maintenance:</strong> Monitored connectivity across 30+ endpoints</div></div>
+                                <div class="flex items-start gap-3 text-zinc-400"><i class="fas fa-check text-violet-500/80 text-sm mt-1.5 shrink-0"></i><div><strong class="text-zinc-300">System Admin:</strong> Deployed OS/software on 15+ workstations</div></div>
+                                <div class="flex items-start gap-3 text-zinc-400"><i class="fas fa-check text-violet-500/80 text-sm mt-1.5 shrink-0"></i><div><strong class="text-zinc-300">Documentation:</strong> Logged 100+ issues & prepared weekly performance reports</div></div>
+                                <div class="flex items-start gap-3 text-zinc-400"><i class="fas fa-check text-violet-500/80 text-sm mt-1.5 shrink-0"></i><div><strong class="text-zinc-300">User Training:</strong> Onboarded 20+ staff members on hospital systems</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ EDUCATION & CERTIFICATIONS ═══════════ -->
+        <section id="education" class="mb-28 reveal">
+            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">Education & Certifications <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div></h2>
+
+            <!-- Education Card -->
+            <div class="glass-card p-8 md:p-10 group hover:border-violet-500/40 relative overflow-hidden transition-all duration-500 shadow-lg mb-8">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative z-10 flex flex-col md:flex-row gap-6 items-start">
+                    <div class="w-14 h-14 rounded-2xl bg-violet-500/10 border border-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 hidden md:flex"><i class="fas fa-graduation-cap text-2xl"></i></div>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row justify-between md:items-start gap-4">
+                            <div>
+                                <h3 class="text-xl font-bold"><i class="fas fa-graduation-cap text-violet-400 md:hidden mr-2"></i>Murang'a University of Technology</h3>
+                                <p class="text-lg text-violet-300 mt-1 font-medium">Bachelor of Science in Information Technology</p>
+                            </div>
+                            <div class="px-4 py-2 bg-white/5 rounded-full border border-white/10 text-sm font-semibold text-zinc-300 shrink-0">Expected 2026</div>
+                        </div>
+                        <div class="mt-5 p-5 rounded-xl bg-black/20 border border-white/5">
+                            <h4 class="text-sm font-semibold mb-3 text-zinc-200">Relevant Coursework:</h4>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                <span class="flex items-center gap-2 text-zinc-400 text-sm"><i class="fas fa-check text-violet-500/80 text-xs"></i> Software Development</span>
+                                <span class="flex items-center gap-2 text-zinc-400 text-sm"><i class="fas fa-check text-violet-500/80 text-xs"></i> Database Systems</span>
+                                <span class="flex items-center gap-2 text-zinc-400 text-sm"><i class="fas fa-check text-violet-500/80 text-xs"></i> OOP</span>
+                                <span class="flex items-center gap-2 text-zinc-400 text-sm"><i class="fas fa-check text-violet-500/80 text-xs"></i> Web & Mobile Dev</span>
+                                <span class="flex items-center gap-2 text-zinc-400 text-sm"><i class="fas fa-check text-violet-500/80 text-xs"></i> Data Structures</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications Grid -->
+            <h3 class="text-xl font-bold mb-2 mt-10">Certifications</h3>
+            <p class="text-zinc-400 mb-6 text-sm"><i class="fas fa-info-circle text-violet-400 mr-2"></i>Industry certifications & Cisco Skills for All credentials</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="glass-card p-4 flex items-center gap-3 hover:border-violet-500/40 transition-all group"><div class="w-10 h-10 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 group-hover:bg-violet-500/20"><i class="fas fa-certificate"></i></div><div><h4 class="text-sm font-bold text-zinc-200">Cisco CCNA</h4><p class="text-zinc-400 text-xs">In Progress</p></div></div>
+                <div class="glass-card p-4 flex items-center gap-3 hover:border-blue-500/40 transition-all group"><div class="w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20"><i class="fas fa-award"></i></div><div><h4 class="text-sm font-bold text-zinc-200">CompTIA A+</h4><p class="text-zinc-400 text-xs">Expected 2026</p></div></div>
+                <div class="glass-card p-4 flex items-center gap-3 hover:border-red-500/40 transition-all group"><div class="w-10 h-10 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 flex items-center justify-center shrink-0 group-hover:bg-red-500/20"><i class="fas fa-shield-alt"></i></div><div><h4 class="text-sm font-bold text-zinc-200">Intro to Cybersecurity</h4><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div></div>
+                <div class="glass-card p-4 flex items-center gap-3 hover:border-emerald-500/40 transition-all group"><div class="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 group-hover:bg-emerald-500/20"><i class="fas fa-network-wired"></i></div><div><h4 class="text-sm font-bold text-zinc-200">Networking Basics</h4><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div></div>
+                <div class="glass-card p-4 flex items-center gap-3 hover:border-yellow-500/40 transition-all group"><div class="w-10 h-10 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 flex items-center justify-center shrink-0 group-hover:bg-yellow-500/20"><i class="fab fa-python"></i></div><div><h4 class="text-sm font-bold text-zinc-200">Python Essentials 1</h4><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div></div>
+                <div class="glass-card p-4 flex items-center gap-3 hover:border-orange-500/40 transition-all group"><div class="w-10 h-10 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 group-hover:bg-orange-500/20"><i class="fab fa-js"></i></div><div><h4 class="text-sm font-bold text-zinc-200">JavaScript Essentials 1</h4><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div></div>
+                <div class="glass-card p-4 flex items-center gap-3 hover:border-sky-500/40 transition-all group"><div class="w-10 h-10 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center shrink-0 group-hover:bg-sky-500/20"><i class="fas fa-microchip"></i></div><div><h4 class="text-sm font-bold text-zinc-200">Introduction to IoT</h4><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div></div>
+                <div class="glass-card p-4 flex items-center gap-3 hover:border-pink-500/40 transition-all group"><div class="w-10 h-10 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400 flex items-center justify-center shrink-0 group-hover:bg-pink-500/20"><i class="fas fa-lock"></i></div><div><h4 class="text-sm font-bold text-zinc-200">Endpoint Security</h4><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div></div>
+                <div class="glass-card p-4 flex items-center gap-3 hover:border-indigo-500/40 transition-all group"><div class="w-10 h-10 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0 group-hover:bg-indigo-500/20"><i class="fas fa-chart-bar"></i></div><div><h4 class="text-sm font-bold text-zinc-200">Intro to Data Science</h4><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div></div>
+                <div class="glass-card p-4 flex items-center gap-3 hover:border-teal-500/40 transition-all group"><div class="w-10 h-10 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center shrink-0 group-hover:bg-teal-500/20"><i class="fas fa-cogs"></i></div><div><h4 class="text-sm font-bold text-zinc-200">Networking Devices & Config</h4><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div></div>
+                <div class="glass-card p-4 flex items-center gap-3 hover:border-cyan-500/40 transition-all group"><div class="w-10 h-10 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0 group-hover:bg-cyan-500/20"><i class="fab fa-linux"></i></div><div><h4 class="text-sm font-bold text-zinc-200">Linux Essentials</h4><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div></div>
+            </div>
+        </section>
+
+        <!-- ═══════════ ABOUT ME ═══════════ -->
+        <section id="about" class="mb-28 reveal">
+            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">About Me <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div></h2>
             <div class="glass-card p-8 md:p-10 border-t border-t-violet-500/20">
                 <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
-                    <div class="w-28 h-28 rounded-full bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center shrink-0 text-4xl font-bold shadow-[0_0_30px_rgba(139,92,246,0.3)]">
-                        KG
-                    </div>
+                    <div class="w-28 h-28 rounded-full bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center shrink-0 text-4xl font-bold shadow-[0_0_30px_rgba(139,92,246,0.3)]">KG</div>
                     <div class="flex-1 text-center md:text-left">
-                        <p class="text-zinc-300 text-lg leading-relaxed mb-4">
-                            I'm a final-year <strong class="text-white">BSc Information Technology</strong> student at Murang'a University of Technology with a passion for building clean, functional software and keeping systems running smoothly.
-                        </p>
-                        <p class="text-zinc-400 leading-relaxed mb-6">
-                            My attachment at <strong class="text-zinc-200">Maragua Level 4 Hospital</strong> gave me real-world exposure to healthcare IT — from troubleshooting critical systems to managing patient records securely. I bring a unique blend of software development skills and hands-on IT support experience that allows me to bridge the gap between users and technology.
-                        </p>
+                        <p class="text-zinc-300 text-lg leading-relaxed mb-4">I'm a final-year <strong class="text-white">BSc Information Technology</strong> student at Murang'a University of Technology with a passion for building clean, functional software and keeping systems running smoothly.</p>
+                        <p class="text-zinc-400 leading-relaxed mb-6">My attachment at <strong class="text-zinc-200">Maragua Level 4 Hospital</strong> gave me real-world exposure to healthcare IT — from troubleshooting critical systems to managing patient records securely. I bridge the gap between users and technology with both development skills and hands-on IT support experience.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                            <div class="flex items-center gap-3 text-zinc-400"><i class="fas fa-bolt text-violet-400"></i> Fast & adaptive learner</div>
+                            <div class="flex items-center gap-3 text-zinc-400"><i class="fas fa-eye text-violet-400"></i> Strong attention to detail</div>
+                            <div class="flex items-center gap-3 text-zinc-400"><i class="fas fa-puzzle-piece text-violet-400"></i> Problem-solving mindset</div>
+                            <div class="flex items-center gap-3 text-zinc-400"><i class="fas fa-users text-violet-400"></i> Excellent team player</div>
+                        </div>
                         <div class="flex flex-wrap justify-center md:justify-start gap-4">
                             <div class="flex items-center gap-2 text-sm text-zinc-400"><i class="fas fa-map-marker-alt text-violet-400"></i> Murang'a, Kenya</div>
                             <div class="flex items-center gap-2 text-sm text-zinc-400"><i class="fas fa-envelope text-violet-400"></i> kyvogithe@gmail.com</div>
@@ -176,694 +410,20 @@
             </div>
         </section>
 
-        <!-- Tech Stack -->
-        <section class="mb-24 reveal">
-            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">
-                Tech Stack
-                <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
-            </h2>
-            <div class="glass-card p-6 overflow-hidden">
-                <div class="flex tech-scroll" style="width: max-content;">
-                    <div class="flex gap-6 pr-6">
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-php text-indigo-400 text-2xl"></i><span class="text-zinc-300 font-medium">PHP</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-js text-yellow-300 text-2xl"></i><span class="text-zinc-300 font-medium">JavaScript</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-python text-yellow-400 text-2xl"></i><span class="text-zinc-300 font-medium">Python</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><span class="bg-blue-500 text-white text-sm font-bold px-2 py-0.5 rounded">TS</span><span class="text-zinc-300 font-medium">TypeScript</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-html5 text-orange-400 text-2xl"></i><span class="text-zinc-300 font-medium">HTML5</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-css3-alt text-blue-400 text-2xl"></i><span class="text-zinc-300 font-medium">CSS3</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fas fa-database text-blue-300 text-2xl"></i><span class="text-zinc-300 font-medium">MySQL</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-git-alt text-orange-500 text-2xl"></i><span class="text-zinc-300 font-medium">Git</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-linux text-zinc-300 text-2xl"></i><span class="text-zinc-300 font-medium">Linux</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fas fa-network-wired text-emerald-400 text-2xl"></i><span class="text-zinc-300 font-medium">Cisco Packet Tracer</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-windows text-blue-400 text-2xl"></i><span class="text-zinc-300 font-medium">Windows Server</span></div>
-                    </div>
-                    <div class="flex gap-6 pr-6">
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-php text-indigo-400 text-2xl"></i><span class="text-zinc-300 font-medium">PHP</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-js text-yellow-300 text-2xl"></i><span class="text-zinc-300 font-medium">JavaScript</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-python text-yellow-400 text-2xl"></i><span class="text-zinc-300 font-medium">Python</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><span class="bg-blue-500 text-white text-sm font-bold px-2 py-0.5 rounded">TS</span><span class="text-zinc-300 font-medium">TypeScript</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-html5 text-orange-400 text-2xl"></i><span class="text-zinc-300 font-medium">HTML5</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-css3-alt text-blue-400 text-2xl"></i><span class="text-zinc-300 font-medium">CSS3</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fas fa-database text-blue-300 text-2xl"></i><span class="text-zinc-300 font-medium">MySQL</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-git-alt text-orange-500 text-2xl"></i><span class="text-zinc-300 font-medium">Git</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-linux text-zinc-300 text-2xl"></i><span class="text-zinc-300 font-medium">Linux</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fas fa-network-wired text-emerald-400 text-2xl"></i><span class="text-zinc-300 font-medium">Cisco Packet Tracer</span></div>
-                        <div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 shrink-0"><i class="fab fa-windows text-blue-400 text-2xl"></i><span class="text-zinc-300 font-medium">Windows Server</span></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education -->
-        <section id="education" class="mb-24 reveal">
-            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">
-                Education
-                <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
-            </h2>
-            <div
-                class="glass-card p-8 md:p-10 group hover:border-violet-500/40 relative overflow-hidden transition-all duration-500 shadow-lg">
-                <div
-                    class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                </div>
-
-                <div class="relative z-10 flex flex-col md:flex-row gap-8 items-start">
-                    <div
-                        class="w-16 h-16 rounded-2xl bg-violet-500/10 border border-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 shadow-inner hidden md:flex">
-                        <i class="fas fa-graduation-cap text-3xl"></i>
-                    </div>
-                    <div class="flex-1 w-full">
-                        <div class="flex flex-col md:flex-row justify-between md:items-start gap-4 mb-6">
-                            <div>
-                                <h3 class="text-2xl font-bold text-white flex items-center gap-3">
-                                    <i class="fas fa-graduation-cap text-violet-400 md:hidden"></i>
-                                    Murang’a University of Technology
-                                </h3>
-                                <p class="text-xl text-violet-300 mt-2 font-medium">Bachelor of Science in Information
-                                    Technology</p>
-                            </div>
-                            <div
-                                class="px-4 py-2 bg-white/5 rounded-full border border-white/10 text-sm font-semibold text-zinc-300 shrink-0 self-start">
-                                Expected 2026
-                            </div>
-                        </div>
-
-                        <div class="p-6 rounded-2xl bg-black/20 border border-white/5">
-                            <h4 class="text-lg font-semibold mb-4 text-zinc-200">Relevant Coursework:</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="flex items-start gap-3 text-zinc-400">
-                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1"></i> Software Development
-                                </div>
-                                <div class="flex items-start gap-3 text-zinc-400">
-                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1"></i> Database Management
-                                    Systems
-                                </div>
-                                <div class="flex items-start gap-3 text-zinc-400">
-                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1"></i> Object-oriented
-                                    programming
-                                </div>
-                                <div class="flex items-start gap-3 text-zinc-400">
-                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1"></i> Web & Mobile
-                                    Application Development
-                                </div>
-                                <div class="flex items-start gap-3 text-zinc-400">
-                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1"></i> Data Structures &
-                                    Algorithms
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certifications -->
-        <section class="mb-24 reveal">
-            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">
-                Certifications
-                <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
-            </h2>
-            <p class="text-zinc-400 mb-6 -mt-4 text-sm"><i class="fas fa-info-circle text-violet-400 mr-2"></i>Industry certifications & Cisco Skills for All credentials</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div class="glass-card p-5 border-transparent hover:border-violet-500/40 transition-all duration-300 flex items-center gap-4 group">
-                    <div class="w-12 h-12 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 group-hover:bg-violet-500/20 transition-colors"><i class="fas fa-certificate text-xl"></i></div>
-                    <div><h3 class="text-base font-bold text-zinc-200">Cisco CCNA</h3><p class="text-zinc-400 text-xs">Networking Fundamentals (In Progress)</p></div>
-                </div>
-                <div class="glass-card p-5 border-transparent hover:border-blue-500/40 transition-all duration-300 flex items-center gap-4 group">
-                    <div class="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 transition-colors"><i class="fas fa-award text-xl"></i></div>
-                    <div><h3 class="text-base font-bold text-zinc-200">CompTIA A+</h3><p class="text-zinc-400 text-xs">IT Support & Hardware (Expected 2026)</p></div>
-                </div>
-                <div class="glass-card p-5 border-transparent hover:border-red-500/40 transition-all duration-300 flex items-center gap-4 group">
-                    <div class="w-12 h-12 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 flex items-center justify-center shrink-0 group-hover:bg-red-500/20 transition-colors"><i class="fas fa-shield-alt text-xl"></i></div>
-                    <div><h3 class="text-base font-bold text-zinc-200">Introduction to Cybersecurity</h3><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div>
-                </div>
-                <div class="glass-card p-5 border-transparent hover:border-emerald-500/40 transition-all duration-300 flex items-center gap-4 group">
-                    <div class="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 group-hover:bg-emerald-500/20 transition-colors"><i class="fas fa-network-wired text-xl"></i></div>
-                    <div><h3 class="text-base font-bold text-zinc-200">Networking Basics</h3><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div>
-                </div>
-                <div class="glass-card p-5 border-transparent hover:border-yellow-500/40 transition-all duration-300 flex items-center gap-4 group">
-                    <div class="w-12 h-12 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 flex items-center justify-center shrink-0 group-hover:bg-yellow-500/20 transition-colors"><i class="fab fa-python text-xl"></i></div>
-                    <div><h3 class="text-base font-bold text-zinc-200">Python Essentials 1</h3><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div>
-                </div>
-                <div class="glass-card p-5 border-transparent hover:border-orange-500/40 transition-all duration-300 flex items-center gap-4 group">
-                    <div class="w-12 h-12 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 group-hover:bg-orange-500/20 transition-colors"><i class="fab fa-js text-xl"></i></div>
-                    <div><h3 class="text-base font-bold text-zinc-200">JavaScript Essentials 1</h3><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div>
-                </div>
-                <div class="glass-card p-5 border-transparent hover:border-sky-500/40 transition-all duration-300 flex items-center gap-4 group">
-                    <div class="w-12 h-12 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center shrink-0 group-hover:bg-sky-500/20 transition-colors"><i class="fas fa-microchip text-xl"></i></div>
-                    <div><h3 class="text-base font-bold text-zinc-200">Introduction to IoT</h3><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div>
-                </div>
-                <div class="glass-card p-5 border-transparent hover:border-pink-500/40 transition-all duration-300 flex items-center gap-4 group">
-                    <div class="w-12 h-12 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400 flex items-center justify-center shrink-0 group-hover:bg-pink-500/20 transition-colors"><i class="fas fa-lock text-xl"></i></div>
-                    <div><h3 class="text-base font-bold text-zinc-200">Endpoint Security</h3><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div>
-                </div>
-                <div class="glass-card p-5 border-transparent hover:border-indigo-500/40 transition-all duration-300 flex items-center gap-4 group">
-                    <div class="w-12 h-12 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0 group-hover:bg-indigo-500/20 transition-colors"><i class="fas fa-chart-bar text-xl"></i></div>
-                    <div><h3 class="text-base font-bold text-zinc-200">Introduction to Data Science</h3><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div>
-                </div>
-                <div class="glass-card p-5 border-transparent hover:border-teal-500/40 transition-all duration-300 flex items-center gap-4 group">
-                    <div class="w-12 h-12 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center shrink-0 group-hover:bg-teal-500/20 transition-colors"><i class="fas fa-cogs text-xl"></i></div>
-                    <div><h3 class="text-base font-bold text-zinc-200">Networking Devices & Configuration</h3><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div>
-                </div>
-                <div class="glass-card p-5 border-transparent hover:border-cyan-500/40 transition-all duration-300 flex items-center gap-4 group">
-                    <div class="w-12 h-12 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0 group-hover:bg-cyan-500/20 transition-colors"><i class="fab fa-linux text-xl"></i></div>
-                    <div><h3 class="text-base font-bold text-zinc-200">Linux Essentials</h3><p class="text-zinc-400 text-xs">Cisco Skills for All</p></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience -->
-        <section id="experience" class="mb-24 reveal">
-            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">
-                Experience
-                <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
-            </h2>
-            <div
-                class="glass-card p-8 md:p-10 group hover:border-violet-500/40 relative overflow-hidden transition-all duration-500 shadow-lg">
-                <div
-                    class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                </div>
-
-                <div class="relative z-10 flex flex-col md:flex-row gap-8 items-start">
-                    <div
-                        class="w-16 h-16 rounded-2xl bg-violet-500/10 border border-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 shadow-inner hidden md:flex">
-                        <i class="fas fa-briefcase text-3xl"></i>
-                    </div>
-                    <div class="flex-1 w-full">
-                        <div class="flex flex-col md:flex-row justify-between md:items-start gap-4 mb-6">
-                            <div>
-                                <h3 class="text-2xl font-bold text-white flex items-center gap-3">
-                                    <i class="fas fa-briefcase text-violet-400 md:hidden"></i>
-                                    IT Support & Networking Basics
-                                </h3>
-                                <p class="text-xl text-violet-300 mt-2 font-medium">Maragua Level 4 Hospital</p>
-                                <p class="text-sm text-zinc-400 mt-1 flex items-center gap-2"><i class="far fa-calendar-alt text-violet-400"></i> May 2025 – August 2025</p>
-                            </div>
-                            <div
-                                class="px-4 py-2 bg-white/5 rounded-full border border-white/10 text-sm font-semibold text-zinc-300 shrink-0 self-start">
-                                Industrial Attachment
-                            </div>
-                        </div>
-
-                        <div class="p-6 rounded-2xl bg-black/20 border border-white/5">
-                            <h4 class="text-lg font-semibold mb-4 text-zinc-200">Key Roles & Responsibilities:</h4>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
-                                <div class="flex items-start gap-3 text-zinc-400">
-                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1.5 shrink-0"></i>
-                                    <div><strong class="text-zinc-300">Technical Support:</strong> Resolved 50+ hardware & software issues for staff across 8 departments, ensuring minimal downtime in critical care units.</div>
-                                </div>
-                                <div class="flex items-start gap-3 text-zinc-400">
-                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1.5 shrink-0"></i>
-                                    <div><strong class="text-zinc-300">HIS Support:</strong> Managed patient registration, EMR, and billing systems for 200+ daily patient records, ensuring 99% data accuracy.</div>
-                                </div>
-                                <div class="flex items-start gap-3 text-zinc-400">
-                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1.5 shrink-0"></i>
-                                    <div><strong class="text-zinc-300">Network Maintenance:</strong> Monitored connectivity across 30+ endpoints, resolved LAN/Wi-Fi issues, and configured network devices.</div>
-                                </div>
-                                <div class="flex items-start gap-3 text-zinc-400">
-                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1.5 shrink-0"></i>
-                                    <div><strong class="text-zinc-300">System Administration:</strong> Installed OS/software on 15+ workstations, applied security patches, and deployed new computers.</div>
-                                </div>
-                                <div class="flex items-start gap-3 text-zinc-400">
-                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1.5 shrink-0"></i>
-                                    <div><strong class="text-zinc-300">Data Security:</strong> Enforced data protection practices and performed daily backups of sensitive hospital records.</div>
-                                </div>
-                                <div class="flex items-start gap-3 text-zinc-400">
-                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1.5 shrink-0"></i>
-                                    <div><strong class="text-zinc-300">Documentation & Reporting:</strong> Logged 100+ IT issues and prepared weekly reports on system performance and faults.</div>
-                                </div>
-                                <div class="flex items-start gap-3 text-zinc-400">
-                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1.5 shrink-0"></i>
-                                    <div><strong class="text-zinc-300">User Training:</strong> Guided 20+ staff members on hospital systems and assisted with new employee IT onboarding.</div>
-                                </div>
-                                <div class="flex items-start gap-3 text-zinc-400">
-                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1.5 shrink-0"></i>
-                                    <div><strong class="text-zinc-300">Equipment Maintenance:</strong> Maintained ICT equipment and tracked inventory of 40+ computers and peripherals.</div>
-                                </div>
-                                <div class="flex items-start gap-3 text-zinc-400 md:col-span-2 lg:col-span-1">
-                                    <i class="fas fa-check text-violet-500/80 text-sm mt-1.5 shrink-0"></i>
-                                    <div><strong class="text-zinc-300">Professional Development:</strong> Gained hands-on experience in healthcare IT operations, data privacy, and critical system support.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Technical Skills -->
-        <section id="skills" class="mb-24 reveal">
-            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">
-                Skills & Competencies
-                <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
-            </h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Technical Skills -->
-                <div class="glass-card p-6 border-transparent hover:bg-violet-500/10 hover:border-violet-500/30 transition-all duration-300 shadow-sm hover:-translate-y-1">
-                    <div class="flex items-center gap-4 mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 text-xl shadow-inner shrink-0">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-zinc-200 leading-tight">Technical Skills<br><span class="text-sm font-normal text-zinc-400">(Hard Skills)</span></h3>
-                    </div>
-                    <ul class="text-zinc-400 text-sm space-y-2.5 leading-relaxed">
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-violet-500/70 mt-1 shrink-0"></i> <span>Computer hardware troubleshooting</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-violet-500/70 mt-1 shrink-0"></i> <span>Software installation & config</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-violet-500/70 mt-1 shrink-0"></i> <span>Networking (Cisco Packet Tracer, LAN, Wi-Fi)</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-violet-500/70 mt-1 shrink-0"></i> <span>Databases & EMR/HIS systems (MySQL)</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-violet-500/70 mt-1 shrink-0"></i> <span>OS (Windows Server, Active Directory, Linux)</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-violet-500/70 mt-1 shrink-0"></i> <span>System maintenance & updates</span></li>
-                    </ul>
-                </div>
-
-                <!-- Interpersonal Skills -->
-                <div class="glass-card p-6 border-transparent hover:bg-blue-500/10 hover:border-blue-500/30 transition-all duration-300 shadow-sm hover:-translate-y-1">
-                    <div class="flex items-center gap-4 mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-xl shadow-inner shrink-0">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-zinc-200 leading-tight">Interpersonal Skills<br><span class="text-sm font-normal text-zinc-400">(Soft Skills)</span></h3>
-                    </div>
-                    <ul class="text-zinc-400 text-sm space-y-2.5 leading-relaxed">
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-blue-500/70 mt-1 shrink-0"></i> <span>Communication (explaining IT simply)</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-blue-500/70 mt-1 shrink-0"></i> <span>Teamwork (working with nurses, admins)</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-blue-500/70 mt-1 shrink-0"></i> <span>Customer service (help desk support)</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-blue-500/70 mt-1 shrink-0"></i> <span>Patience and empathy with users</span></li>
-                    </ul>
-                </div>
-
-                <!-- Problem-Solving Skills -->
-                <div class="glass-card p-6 border-transparent hover:bg-orange-500/10 hover:border-orange-500/30 transition-all duration-300 shadow-sm hover:-translate-y-1">
-                    <div class="flex items-center gap-4 mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 text-xl shadow-inner shrink-0">
-                            <i class="fas fa-puzzle-piece"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-zinc-200 leading-tight">Problem-Solving<br><span class="text-sm font-normal text-zinc-400">Skills</span></h3>
-                    </div>
-                    <ul class="text-zinc-400 text-sm space-y-2.5 leading-relaxed">
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-orange-500/70 mt-1 shrink-0"></i> <span>Diagnosing technical issues accurately</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-orange-500/70 mt-1 shrink-0"></i> <span>Troubleshooting under pressure</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-orange-500/70 mt-1 shrink-0"></i> <span>Logical thinking and analysis</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-orange-500/70 mt-1 shrink-0"></i> <span>Decision-making in urgent situations</span></li>
-                    </ul>
-                </div>
-
-                <!-- Security & Ethical Skills -->
-                <div class="glass-card p-6 border-transparent hover:bg-red-500/10 hover:border-red-500/30 transition-all duration-300 shadow-sm hover:-translate-y-1">
-                    <div class="flex items-center gap-4 mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 text-xl shadow-inner shrink-0">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-zinc-200 leading-tight">Security & Ethical<br><span class="text-sm font-normal text-zinc-400">Skills</span></h3>
-                    </div>
-                    <ul class="text-zinc-400 text-sm space-y-2.5 leading-relaxed">
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-red-500/70 mt-1 shrink-0"></i> <span>Data confidentiality (patient records)</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-red-500/70 mt-1 shrink-0"></i> <span>Understanding basic cybersecurity</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-red-500/70 mt-1 shrink-0"></i> <span>Ethical handling of sensitive information</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-red-500/70 mt-1 shrink-0"></i> <span>Following IT policies and protocols</span></li>
-                    </ul>
-                </div>
-
-                <!-- Organizational Skills -->
-                <div class="glass-card p-6 border-transparent hover:bg-sky-500/10 hover:border-sky-500/30 transition-all duration-300 shadow-sm hover:-translate-y-1">
-                    <div class="flex items-center gap-4 mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 text-xl shadow-inner shrink-0">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-zinc-200 leading-tight">Organizational<br><span class="text-sm font-normal text-zinc-400">Skills</span></h3>
-                    </div>
-                    <ul class="text-zinc-400 text-sm space-y-2.5 leading-relaxed">
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-sky-500/70 mt-1 shrink-0"></i> <span>Time management across tasks</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-sky-500/70 mt-1 shrink-0"></i> <span>Task prioritization for critical issues</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-sky-500/70 mt-1 shrink-0"></i> <span>Record keeping (logs, reports)</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-sky-500/70 mt-1 shrink-0"></i> <span>Inventory management (tracking devices)</span></li>
-                    </ul>
-                </div>
-
-                <!-- Learning & Adaptability -->
-                <div class="glass-card p-6 border-transparent hover:bg-pink-500/10 hover:border-pink-500/30 transition-all duration-300 shadow-sm hover:-translate-y-1">
-                    <div class="flex items-center gap-4 mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 text-xl shadow-inner shrink-0">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-zinc-200 leading-tight">Learning &<br><span class="text-sm font-normal text-zinc-400">Adaptability</span></h3>
-                    </div>
-                    <ul class="text-zinc-400 text-sm space-y-2.5 leading-relaxed">
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-pink-500/70 mt-1 shrink-0"></i> <span>Willingness to learn new systems</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-pink-500/70 mt-1 shrink-0"></i> <span>Adaptability to new environments</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-pink-500/70 mt-1 shrink-0"></i> <span>Ability to take constructive feedback</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-pink-500/70 mt-1 shrink-0"></i> <span>Self-improvement mindset</span></li>
-                    </ul>
-                </div>
-
-                <!-- Administrative & Documentation -->
-                <div class="glass-card p-6 border-transparent hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all duration-300 shadow-sm hover:-translate-y-1">
-                    <div class="flex items-center gap-4 mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl shadow-inner shrink-0">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-zinc-200 leading-tight">Admin &<br><span class="text-sm font-normal text-zinc-400">Documentation</span></h3>
-                    </div>
-                    <ul class="text-zinc-400 text-sm space-y-2.5 leading-relaxed">
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-emerald-500/70 mt-1 shrink-0"></i> <span>Writing clear reports and logbooks</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-emerald-500/70 mt-1 shrink-0"></i> <span>Documenting system issues and fixes</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-angle-right text-emerald-500/70 mt-1 shrink-0"></i> <span>Preparing simple IT manuals or guides</span></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Projects -->
-        <section id="projects" class="mb-24 reveal">
-            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">
-                Featured Projects
-                <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
-            </h2>
-
-            <div class="space-y-8">
-                <!-- Murang'a Farmers Support System -->
-                <div
-                    class="glass-card p-8 md:p-10 group hover:border-violet-500/40 relative overflow-hidden transition-all duration-500 shadow-lg">
-                    <div
-                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    </div>
-
-                    <div class="flex flex-col md:flex-row gap-8 items-start">
-                        <div class="flex-1">
-                            <h3 class="text-2xl font-bold mb-4">Murang'a Farmers Support System</h3>
-
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-php text-indigo-400"></i> PHP</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fas fa-database text-blue-400"></i> MySQL</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-html5 text-orange-400"></i> HTML/CSS</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-js text-yellow-300"></i> JS</span>
-                            </div>
-
-                            <p class="text-zinc-400 mb-8 leading-relaxed">
-                                A comprehensive platform bridging the gap between farmers and agricultural support
-                                services. Features intuitive dashboards and seamless data management.
-                            </p>
-
-                            <div class="mb-8 p-6 rounded-2xl bg-black/20 border border-white/5">
-                                <h4 class="text-lg font-semibold mb-4 text-violet-300">Key Achievements & Learnings:
-                                </h4>
-                                <ul class="space-y-4">
-                                    <li class="flex items-start gap-4 text-zinc-300">
-                                        <div
-                                            class="w-6 h-6 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 mt-0.5">
-                                            <i class="fas fa-check text-xs"></i>
-                                        </div>
-                                        <span>Built a real-world system entirely from scratch</span>
-                                    </li>
-                                    <li class="flex items-start gap-4 text-zinc-300">
-                                        <div
-                                            class="w-6 h-6 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 mt-0.5">
-                                            <i class="fas fa-check text-xs"></i>
-                                        </div>
-                                        <span>Designed user-friendly, responsive dashboards</span>
-                                    </li>
-                                    <li class="flex items-start gap-4 text-zinc-300">
-                                        <div
-                                            class="w-6 h-6 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 mt-0.5">
-                                            <i class="fas fa-check text-xs"></i>
-                                        </div>
-                                        <span>Robust backend integration using PHP & MySQL</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <a href="https://github.com/Kevin-Githinji/Muranga-farmers-suppport" target="_blank"
-                                class="inline-flex items-center gap-2 text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/50 px-6 py-3 rounded-xl font-medium transition-all duration-300 group/link shadow-sm">
-                                <i
-                                    class="fab fa-github text-xl text-zinc-300 group-hover/link:text-white transition-colors"></i>
-                                View Repository
-                                <i
-                                    class="fas fa-arrow-right text-sm ml-1 text-violet-400 group-hover/link:translate-x-1 transition-transform"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kelmas Project -->
-                <div
-                    class="glass-card p-8 md:p-10 group hover:border-violet-500/40 relative overflow-hidden transition-all duration-500 shadow-lg">
-                    <div
-                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    </div>
-
-                    <div class="flex flex-col md:flex-row gap-8 items-start">
-                        <div class="flex-1">
-                            <div class="flex flex-wrap items-center gap-3 mb-4">
-                                <h3 class="text-2xl font-bold">Kelmas Website</h3>
-                                <span
-                                    class="px-3 py-1 bg-violet-500/10 text-violet-300 text-xs font-semibold rounded-full border border-violet-500/30 shadow-[0_0_10px_rgba(139,92,246,0.1)]">Solo
-                                    Work</span>
-                            </div>
-
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-php text-indigo-400"></i> PHP</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-html5 text-orange-400"></i> HTML/CSS</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-js text-yellow-300"></i> JS</span>
-                            </div>
-
-                            <p class="text-zinc-400 mb-8 leading-relaxed">
-                                An independent full-stack web project demonstrating end-to-end development capabilities,
-                                from UI design to backend logic execution.
-                            </p>
-
-                            <div class="mb-8 p-6 rounded-2xl bg-black/20 border border-white/5">
-                                <h4 class="text-lg font-semibold mb-4 text-violet-300">Key Achievements & Learnings:
-                                </h4>
-                                <ul class="space-y-4">
-                                    <li class="flex items-start gap-4 text-zinc-300">
-                                        <div
-                                            class="w-6 h-6 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 mt-0.5">
-                                            <i class="fas fa-check text-xs"></i>
-                                        </div>
-                                        <span>Owned the complete development lifecycle independently</span>
-                                    </li>
-                                    <li class="flex items-start gap-4 text-zinc-300">
-                                        <div
-                                            class="w-6 h-6 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 mt-0.5">
-                                            <i class="fas fa-check text-xs"></i>
-                                        </div>
-                                        <span>Strengthened problem-solving skills in isolation</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <a href="https://github.com/Kevin-Githinji/Kelmas" target="_blank"
-                                class="inline-flex items-center gap-2 text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/50 px-6 py-3 rounded-xl font-medium transition-all duration-300 group/link shadow-sm">
-                                <i
-                                    class="fab fa-github text-xl text-zinc-300 group-hover/link:text-white transition-colors"></i>
-                                View Repository
-                                <i
-                                    class="fas fa-arrow-right text-sm ml-1 text-violet-400 group-hover/link:translate-x-1 transition-transform"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pharmaceutical MIS -->
-                <div
-                    class="glass-card p-8 md:p-10 group hover:border-blue-500/40 relative overflow-hidden transition-all duration-500 shadow-lg">
-                    <div
-                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-sky-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    </div>
-
-                    <div class="flex flex-col md:flex-row gap-8 items-start">
-                        <div class="flex-1">
-                            <div class="flex flex-wrap items-center gap-3 mb-4">
-                                <h3 class="text-2xl font-bold">Pharmaceutical MIS</h3>
-                                <span
-                                    class="px-3 py-1 bg-blue-500/10 text-blue-300 text-xs font-semibold rounded-full border border-blue-500/30 shadow-[0_0_10px_rgba(59,130,246,0.1)]">Group
-                                    Work</span>
-                            </div>
-
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><span
-                                        class="bg-blue-500 text-white text-[9px] font-bold px-1 rounded-sm">TS</span>
-                                    TypeScript</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-python text-yellow-400"></i> Python</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-html5 text-orange-400"></i> HTML/CSS</span>
-                            </div>
-
-                            <p class="text-zinc-400 mb-8 leading-relaxed">
-                                A collaboratively built Management Information System tailored for pharmaceutical
-                                operations, featuring modern tech stacks and structured architectures.
-                            </p>
-
-                            <div class="mb-8 p-6 rounded-2xl bg-black/20 border border-white/5">
-                                <h4 class="text-lg font-semibold mb-4 text-blue-300">Key Achievements & Learnings:</h4>
-                                <ul class="space-y-4">
-                                    <li class="flex items-start gap-4 text-zinc-300">
-                                        <div
-                                            class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
-                                            <i class="fas fa-check text-xs"></i>
-                                        </div>
-                                        <span>Gained practical experience in collaborative Git workflows</span>
-                                    </li>
-                                    <li class="flex items-start gap-4 text-zinc-300">
-                                        <div
-                                            class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
-                                            <i class="fas fa-check text-xs"></i>
-                                        </div>
-                                        <span>Successfully integrated diverse language stacks (TypeScript &
-                                            Python)</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <a href="https://github.com/Kevin-Githinji/pharmaceutical_MIS" target="_blank"
-                                class="inline-flex items-center gap-2 text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/50 px-6 py-3 rounded-xl font-medium transition-all duration-300 group/link shadow-sm">
-                                <i
-                                    class="fab fa-github text-xl text-zinc-300 group-hover/link:text-white transition-colors"></i>
-                                View Repository
-                                <i
-                                    class="fas fa-arrow-right text-sm ml-1 text-blue-400 group-hover/link:translate-x-1 transition-transform"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Dynamic Duo Layout: Goals & Strengths -->
-        <div class="grid md:grid-cols-2 gap-8 mb-24">
-
-            <!-- Goals Box -->
-            <section class="reveal">
-                <h2 class="text-3xl font-bold mb-8 flex items-center gap-4">
-                    What I'm Looking For
-                    <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
-                </h2>
-
-                <div class="glass-card p-8 h-[calc(100%-4rem)] border-t border-t-blue-500/20">
-                    <ul class="space-y-8">
-                        <li class="flex gap-5 items-center">
-                            <div
-                                class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 shadow-inner">
-                                <i class="fas fa-laptop-code text-2xl"></i>
-                            </div>
-                            <span class="text-zinc-200 font-medium text-lg leading-snug">Internship or Full-time Job in Software Engineering / IT Support</span>
-                        </li>
-                        <li class="flex gap-5 items-center">
-                            <div
-                                class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 shadow-inner">
-                                <i class="fas fa-user-graduate text-2xl"></i>
-                            </div>
-                            <span class="text-zinc-200 font-medium text-lg leading-snug">Mentorship and valuable
-                                real-world experience</span>
-                        </li>
-                        <li class="flex gap-5 items-center">
-                            <div
-                                class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 shadow-inner">
-                                <i class="fas fa-rocket text-2xl"></i>
-                            </div>
-                            <span class="text-zinc-200 font-medium text-lg leading-snug">Opportunity to contribute to
-                                live projects</span>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Strengths Box -->
-            <section class="reveal">
-                <h2 class="text-3xl font-bold mb-8 flex items-center gap-4">
-                    My Strengths
-                    <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
-                </h2>
-
-                <div class="glass-card p-8 h-[calc(100%-4rem)] border-t border-t-violet-500/20">
-                    <ul class="space-y-6">
-                        <li class="flex gap-5 items-center">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-violet-500/10 text-violet-400 flex items-center justify-center shrink-0">
-                                <i class="fas fa-bolt text-xl"></i>
-                            </div>
-                            <span class="text-zinc-300 font-medium">Fast and adaptive learner</span>
-                        </li>
-                        <li class="flex gap-5 items-center">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-violet-500/10 text-violet-400 flex items-center justify-center shrink-0">
-                                <i class="fas fa-eye text-xl"></i>
-                            </div>
-                            <span class="text-zinc-300 font-medium">Strong attention to detail & aesthetics</span>
-                        </li>
-                        <li class="flex gap-5 items-center">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-violet-500/10 text-violet-400 flex items-center justify-center shrink-0">
-                                <i class="fas fa-puzzle-piece text-xl"></i>
-                            </div>
-                            <span class="text-zinc-300 font-medium">Problem-solving mindset</span>
-                        </li>
-                        <li class="flex gap-5 items-center">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-violet-500/10 text-violet-400 flex items-center justify-center shrink-0">
-                                <i class="fas fa-users text-xl"></i>
-                            </div>
-                            <span class="text-zinc-300 font-medium">Excellent team collaboration</span>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-
-        <!-- Contact Call To Action -->
-        <section class="reveal mb-12">
-            <div
-                class="glass-card p-12 md:p-16 text-center relative overflow-hidden bg-gradient-to-br from-violet-900/10 to-blue-900/10 border-violet-500/20 shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(139,92,246,0.1)]">
-                <div
-                    class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]">
-                </div>
-
+        <!-- ═══════════ CONTACT CTA ═══════════ -->
+        <section id="contact" class="reveal mb-12">
+            <div class="glass-card p-12 md:p-16 text-center relative overflow-hidden bg-gradient-to-br from-violet-900/10 to-blue-900/10 border-violet-500/20 shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(139,92,246,0.1)]">
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
                 <div class="relative z-10">
-                    <div
-                        class="w-20 h-20 mx-auto rounded-full bg-violet-500/10 border border-violet-500/20 flex items-center justify-center mb-8 shadow-inner">
-                        <i class="fas fa-handshake text-3xl text-violet-400"></i>
-                    </div>
+                    <div class="w-20 h-20 mx-auto rounded-full bg-violet-500/10 border border-violet-500/20 flex items-center justify-center mb-8 shadow-inner"><i class="fas fa-handshake text-3xl text-violet-400"></i></div>
                     <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Build Together</h2>
-                    <p class="text-zinc-400 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-                        I'm currently seeking an internship where I can bring value to a team while expanding my
-                        skillset. Let's start a conversation!
-                    </p>
-
+                    <p class="text-zinc-400 text-lg mb-4 max-w-2xl mx-auto">I'm currently seeking an internship or freelance opportunity where I can bring value to a team while expanding my skillset.</p>
+                    <p class="text-emerald-400 text-sm font-semibold mb-10 flex items-center justify-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Available for internships & freelance</p>
                     <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-                        <a href="https://github.com/Kevin-Githinji" target="_blank"
-                            class="px-6 py-3.5 rounded-full bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 hover:bg-zinc-800 transition-all font-medium flex items-center justify-center gap-2">
-                            <i class="fab fa-github text-lg"></i> GitHub
-                        </a>
-                        <a href="https://linkedin.com/in/kevin-githinji" target="_blank"
-                            class="px-6 py-3.5 rounded-full bg-zinc-900 border border-zinc-800 hover:border-blue-500/50 hover:bg-zinc-800 transition-all font-medium flex items-center justify-center gap-2">
-                            <i class="fab fa-linkedin text-lg text-blue-400"></i> LinkedIn
-                        </a>
-                        <a href="tel:+254743661514"
-                            class="px-6 py-3.5 rounded-full bg-zinc-900 border border-zinc-800 hover:border-green-500/50 hover:bg-zinc-800 transition-all font-medium flex items-center justify-center gap-2">
-                            <i class="fas fa-phone-alt text-lg text-green-400"></i> Phone
-                        </a>
-                        <a href="mailto:kyvogithe@gmail.com"
-                            class="px-6 py-3.5 rounded-full bg-violet-600 hover:bg-violet-500 text-white shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.5)] transition-all font-medium flex items-center justify-center gap-2 transform hover:-translate-y-0.5">
-                            <i class="fas fa-envelope text-lg"></i> Email Me
-                        </a>
+                        <a href="https://github.com/Kevin-Githinji" target="_blank" class="px-6 py-3.5 rounded-full bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 hover:bg-zinc-800 transition-all font-medium flex items-center justify-center gap-2"><i class="fab fa-github text-lg"></i> GitHub</a>
+                        <a href="https://linkedin.com/in/kevin-githinji" target="_blank" class="px-6 py-3.5 rounded-full bg-zinc-900 border border-zinc-800 hover:border-blue-500/50 hover:bg-zinc-800 transition-all font-medium flex items-center justify-center gap-2"><i class="fab fa-linkedin text-lg text-blue-400"></i> LinkedIn</a>
+                        <a href="tel:+254743661514" class="px-6 py-3.5 rounded-full bg-zinc-900 border border-zinc-800 hover:border-green-500/50 hover:bg-zinc-800 transition-all font-medium flex items-center justify-center gap-2"><i class="fas fa-phone-alt text-lg text-green-400"></i> Phone</a>
+                        <a href="mailto:kyvogithe@gmail.com" class="px-6 py-3.5 rounded-full bg-violet-600 hover:bg-violet-500 text-white shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.5)] transition-all font-medium flex items-center justify-center gap-2 transform hover:-translate-y-0.5"><i class="fas fa-envelope text-lg"></i> Email Me</a>
                     </div>
                 </div>
             </div>
@@ -872,60 +432,68 @@
         <!-- Footer -->
         <footer class="py-10 text-center text-zinc-500 mt-20 relative z-10">
             <div class="w-24 h-px bg-gradient-to-r from-transparent via-zinc-700 to-transparent mx-auto mb-8"></div>
-            <p>&copy; 2026 Kevin Githinji. Built with <i class="fas fa-heart text-violet-500/50 mx-1"></i> passion &
-                precision.</p>
+            <p class="mb-2">&copy; 2026 Kevin Githinji. Built with <i class="fas fa-heart text-violet-500/50 mx-1"></i> passion & precision.</p>
+            <p class="text-xs text-zinc-600">HTML &middot; CSS &middot; JavaScript</p>
         </footer>
-
     </div>
 
-    <!-- Back to Top Button -->
-    <a href="#" id="back-to-top" class="back-to-top w-12 h-12 rounded-full bg-violet-600 hover:bg-violet-500 text-white flex items-center justify-center shadow-[0_0_15px_rgba(124,58,237,0.4)] transition-all">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+    <!-- Back to Top -->
+    <a href="#" id="back-to-top" class="back-to-top w-12 h-12 rounded-full bg-violet-600 hover:bg-violet-500 text-white flex items-center justify-center shadow-[0_0_15px_rgba(124,58,237,0.4)] transition-all"><i class="fas fa-arrow-up"></i></a>
 
-    <!-- Scroll Reveal + Sticky Nav + Back to Top Logic -->
     <script>
         // Scroll Reveal
         function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 120;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
+            document.querySelectorAll(".reveal").forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 120) el.classList.add("active");
+            });
         }
 
         // Sticky Nav
         const nav = document.getElementById('main-nav');
-        const navOffsetTop = nav.offsetTop + nav.offsetHeight;
+        const navOffset = nav.offsetTop + nav.offsetHeight;
         function handleScroll() {
-            if (window.scrollY > navOffsetTop) {
-                nav.classList.add('nav-sticky');
-            } else {
-                nav.classList.remove('nav-sticky');
-            }
-            // Back to top visibility
-            const btn = document.getElementById('back-to-top');
-            if (window.scrollY > 600) {
-                btn.classList.add('visible');
-            } else {
-                btn.classList.remove('visible');
-            }
+            nav.classList.toggle('nav-sticky', window.scrollY > navOffset);
+            document.getElementById('back-to-top').classList.toggle('visible', window.scrollY > 600);
         }
-
         window.addEventListener("scroll", () => { reveal(); handleScroll(); });
         setTimeout(reveal, 100);
 
-        // Close mobile menu on link click
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mobile-menu').classList.remove('open');
+        // Dark/Light Mode
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+        const body = document.body;
+        function setTheme(dark) {
+            if (dark) {
+                html.classList.add('dark'); html.classList.remove('light');
+                body.classList.add('dark', 'bg-darkbg', 'text-white'); body.classList.remove('light', 'bg-lightbg', 'text-slate-800');
+                icon.className = 'fas fa-moon text-sm text-violet-400';
+            } else {
+                html.classList.remove('dark'); html.classList.add('light');
+                body.classList.remove('dark', 'bg-darkbg', 'text-white'); body.classList.add('light', 'bg-lightbg', 'text-slate-800');
+                icon.className = 'fas fa-sun text-sm text-yellow-400';
+            }
+            localStorage.setItem('theme', dark ? 'dark' : 'light');
+        }
+        toggle.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
+        if (localStorage.getItem('theme') === 'light') setTheme(false);
+
+        // Project Filter
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.project-card').forEach(card => {
+                    card.classList.toggle('hidden-card', filter !== 'all' && card.dataset.category !== filter);
+                });
             });
+        });
+
+        // Mobile menu close on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
         });
     </script>
 </body>
-
 </html>
