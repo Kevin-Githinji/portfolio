@@ -5,8 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Kevin Githinji — Full-Stack Developer & IT Support Specialist. Building modern, scalable web applications with great user experience.">
-    <title>Kevin Githinji - Portfolio</title>
+        content="Kevin Githinji — Full-Stack Developer & IT Support Specialist in Kenya. React, TypeScript, Node.js, and PostgreSQL applications, freelance websites, and IT support.">
+    <title>Kevin Githinji | Full-Stack Developer & IT Support</title>
+    <meta property="og:title" content="Kevin Githinji | Full-Stack Developer & IT Support">
+    <meta property="og:description" content="Explore application projects, freelance services, and IT support experience.">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://portfolio.kevorahub.com/">
+    <meta property="og:url" content="https://portfolio.kevorahub.com/">
+    <meta property="og:image" content="https://portfolio.kevorahub.com/assets/profile/kevin-githinji.jpg">
+    <meta name="twitter:image" content="https://portfolio.kevorahub.com/assets/profile/kevin-githinji.jpg">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%237c3aed'/><text x='50' y='68' font-size='50' font-family='Arial' font-weight='bold' text-anchor='middle' fill='white'>KG</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,6 +38,20 @@
         }
     </script>
     <style>
+        html { overflow-x: clip; }
+        article.has-visual { padding: 0; overflow: hidden; }
+        .project-copy { padding: 1.5rem; }
+        .project-visual { margin: 0; min-width: 0; background: #eef2f6; }
+        .project-visual img { width: 100%; height: auto; aspect-ratio: 16 / 11; object-fit: contain; display: block; }
+        .project-visual figcaption { background: #101624; color: #cbd5e1; font-size: .7rem; padding: .7rem 1rem; line-height: 1.5; }
+        @media (min-width: 1024px) { .featured-visual { display: grid; grid-template-columns: 42% 58%; align-items: center; } .featured-visual .project-copy { padding: 2rem; } }
+
+        section { scroll-margin-top: 100px; }
+        .skip-link { position: fixed; top: -100px; left: 1rem; z-index: 100; padding: .75rem 1rem; background: #7c3aed; color: white; }
+        .skip-link:focus { top: 1rem; }
+        :focus-visible { outline: 2px solid #a78bfa; outline-offset: 4px; }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } .reveal, nav, header { opacity: 1 !important; transform: none !important; } }
+
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -55,7 +77,7 @@
 
         .bg-glow {
             position: absolute;
-            width: 600px;
+            width: min(600px, 100vw);
             height: 600px;
             background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
             top: -200px;
@@ -67,11 +89,11 @@
 
         .bg-glow-2 {
             position: absolute;
-            width: 500px;
+            width: min(500px, 60vw);
             height: 500px;
             background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
             top: 40%;
-            right: -150px;
+            right: 0;
             z-index: -1;
             filter: blur(50px);
             pointer-events: none;
@@ -79,13 +101,16 @@
 
         .nav-sticky {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 1rem;
+            left: max(1rem, calc((100vw - 1060px) / 2));
+            right: auto;
+            width: calc(100% - 2rem);
+            max-width: 1060px;
+            border-radius: 1rem;
             z-index: 50;
             backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 1rem 0;
+            padding: .9rem 1.2rem;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -142,6 +167,20 @@
         .mobile-menu.open {
             display: flex;
         }
+        .nav-sticky + .mobile-menu.open {
+            position: fixed;
+            top: 5.5rem;
+            left: 1rem;
+            right: 1rem;
+            z-index: 50;
+            padding: 1.25rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255,255,255,.1);
+            background: #111827;
+            box-shadow: 0 12px 30px rgba(0,0,0,.2);
+        }
+        .light .nav-sticky + .mobile-menu.open { background: #fff; border-color: #e2e8f0; }
+        @media(min-width: 1024px) { .mobile-menu.open { display: none; } }
 
         @keyframes scroll-left {
             0% {
@@ -206,12 +245,67 @@
         .light .bg-glow-2 {
             opacity: 0.3;
         }
+
+        .section-intro { max-width: 700px; margin-bottom: 1.75rem; }
+        .section-kicker { color: #a78bfa; text-transform: uppercase; letter-spacing: .15em; font-size: .75rem; font-weight: 600; margin-bottom: .6rem; }
+        .section-intro h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.2; font-weight: 700; margin-bottom: .8rem; }
+        .section-intro > p:last-child { color: #a1a1aa; line-height: 1.7; }
+        .project-filters { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 1rem; }
+        .project-filter { border: 1px solid rgba(255,255,255,.12); border-radius: 100px; padding: .6rem 1rem; color: #d4d4d8; font-size: .85rem; transition: background .2s; }
+        .project-privacy { color: #a1a1aa; font-size: .78rem; line-height: 1.6; max-width: 700px; margin-bottom: 2.5rem; }
+        .project-group { margin-bottom: 3.5rem; }
+        .project-group[hidden] { display: none; }
+        .project-group-heading { margin-bottom: 1.3rem; }
+        .project-group-heading h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: .4rem; }
+        .project-group-heading p { color: #a1a1aa; font-size: .88rem; line-height: 1.6; }
+        .project-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; align-items: stretch; }
+        article.portfolio-project { padding: 0; overflow: hidden; display: flex; flex-direction: column; transition: border-color .2s; }
+        article.portfolio-project:hover { border-color: rgba(139,92,246,.5); }
+        article.portfolio-project.hidden-card { display: none; }
+        .portfolio-project .project-visual img { aspect-ratio: 16 / 10; }
+        .portfolio-project .project-copy { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
+        .project-heading h4 { font-size: 1.22rem; line-height: 1.4; font-weight: 700; margin: .75rem 0 .7rem; }
+        .project-status { display: inline-block; background: rgba(139,92,246,.1); border: 1px solid rgba(139,92,246,.22); color: #c4b5fd; padding: .25rem .6rem; border-radius: 100px; font-size: .68rem; }
+        .project-summary { color: #a1a1aa; line-height: 1.65; font-size: .9rem; margin-bottom: 1rem; }
+        .department-focus { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1rem; margin-bottom: 1rem; }
+        .department-focus strong, .module-coverage h5 { display: block; font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: #d4d4d8; font-weight: 600; margin-bottom: .4rem; }
+        .department-focus span { font-size: .8rem; color: #a1a1aa; }
+        .module-coverage ul { display: grid; gap: .4rem; margin-top: .6rem; }
+        .module-coverage li { display: flex; align-items: center; gap: .6rem; color: #d4d4d8; font-size: .85rem; }
+        .module-coverage li span { color: #a78bfa; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1.25rem 0; }
+        .tech-tag { font-size: .7rem; color: #d4d4d8; border: 1px solid rgba(255,255,255,.09); background: rgba(255,255,255,.03); border-radius: .4rem; padding: .3rem .55rem; }
+        .project-footer { margin-top: auto; padding-top: .9rem; border-top: 1px solid rgba(255,255,255,.08); }
+        .project-source { font-size: .8rem; color: #c4b5fd; }
+        .project-source:hover { text-decoration: underline; }
+        .project-source-label { color: #a1a1aa; font-size: .75rem; }
+        .project-text-cover { aspect-ratio: 16 / 10; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: .7rem; background: linear-gradient(135deg,#111827,#1e1b4b); color: #c4b5fd; }
+        .project-text-cover i { font-size: 2rem; }
+        .project-text-cover span { font-size: .9rem; font-weight: 600; }
+        .project-text-cover p { font-size: .72rem; color: #a1a1aa; }
+        .light .project-status { color: #6d28d9; }
+        .light .project-filter, .light .tech-tag, .light .module-coverage li, .light .department-focus strong, .light .module-coverage h5 { color: #334155; }
+        .light .project-summary, .light .department-focus span, .light .project-source-label, .light .project-privacy, .light .project-group-heading p, .light .section-intro > p:last-child { color: #64748b; }
+        .light .department-focus, .light .project-footer, .light .tech-tag, .light .project-filter { border-color: #e2e8f0; }
+        .light .project-source { color: #6d28d9; }
+        @media(max-width: 640px) { .project-grid { grid-template-columns: minmax(0,1fr); gap: 1.25rem; } .portfolio-project .project-copy { padding: 1.25rem; } }
+
+        .hero-layout { display: grid; grid-template-columns: minmax(0,1.6fr) minmax(0,1fr); align-items: center; gap: 2.5rem; }
+        .hero-copy { min-width: 0; }
+        .hero-portrait { overflow: hidden; border-radius: 1.5rem; border: 1px solid rgba(139,92,246,.3); background: #111827; box-shadow: 0 24px 70px rgba(124,58,237,.12); }
+        .hero-portrait img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 43% 45%; display: block; }
+        .hero-portrait figcaption { padding: 1rem 1.25rem; font-size: .9rem; font-weight: 600; color: #f1f5f9; }
+        .hero-portrait figcaption span { display: block; margin-top: .3rem; font-size: .72rem; font-weight: 400; color: #a1a1aa; }
+        .about-portrait { width: 112px; height: 112px; flex-shrink: 0; border-radius: 50%; object-fit: cover; object-position: 43% 28%; border: 2px solid #8b5cf6; }
+        .nav-actions { display: flex; align-items: center; gap: .7rem; flex-shrink: 0; }
+        @media(max-width: 767px) { .hero-layout { grid-template-columns: minmax(0,1fr); gap: 2rem; } .hero-portrait { max-width: 340px; width: 100%; } .hero-portrait img { aspect-ratio: 5 / 4; object-position: 43% 35%; } }
     </style>
 </head>
 
 <body
     class="bg-darkbg dark text-white font-sans antialiased overflow-x-hidden selection:bg-violet-500 selection:text-white relative transition-colors duration-300">
 
+    <a href="#projects" class="skip-link">Skip to projects</a>
     <div class="bg-glow"></div>
     <div class="bg-glow-2"></div>
 
@@ -222,46 +316,26 @@
             class="flex justify-between items-center py-8 opacity-0 animate-[fadeInDown_1s_ease-out_forwards] transition-all duration-300">
             <a href="#"
                 class="text-3xl font-extrabold bg-gradient-to-r from-violet-400 to-blue-500 bg-clip-text text-transparent tracking-tight">KG.</a>
-            <div class="hidden md:flex items-center gap-6">
-                <a href="#projects"
-                    class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Projects</a>
-                <a href="#skills"
-                    class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Skills</a>
-                <a href="#experience"
-                    class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Experience</a>
-                <a href="#education"
-                    class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Education</a>
-                <a href="#about"
-                    class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">About</a>
-                <button id="theme-toggle"
-                    class="w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 flex items-center justify-center transition-all"
-                    title="Toggle theme">
-                    <i class="fas fa-moon text-sm text-violet-400" id="theme-icon"></i>
-                </button>
+            <div class="hidden lg:flex items-center gap-5"><a href="#projects" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Projects</a><a href="#services" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Services</a><a href="#skills" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Skills</a><a href="#experience" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Experience</a><a href="#about" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">About</a>
+
                 <a href="mailto:kyvogithe@gmail.com"
                     class="px-5 py-2.5 rounded-full glass-card hover:bg-white/5 border-transparent hover:border-violet-500/50 transition-all duration-300 flex items-center gap-2 text-sm font-medium group">
                     <i class="fas fa-paper-plane text-violet-400 group-hover:text-violet-300 transition-colors"></i> Get
                     in touch
                 </a>
             </div>
-            <button id="mobile-toggle" class="md:hidden text-zinc-400 hover:text-white text-xl p-2"
-                onclick="document.getElementById('mobile-menu').classList.toggle('open')"><i
-                    class="fas fa-bars"></i></button>
+            <div class="nav-actions"><button id="theme-toggle"
+                    class="w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 flex items-center justify-center transition-all"
+                    title="Toggle theme" aria-label="Toggle color theme">
+                    <i class="fas fa-moon text-sm text-violet-400" id="theme-icon"></i>
+                </button><button id="mobile-toggle" aria-label="Toggle navigation" aria-controls="mobile-menu" aria-expanded="false" class="lg:hidden text-zinc-400 hover:text-white text-xl p-2"
+                onclick="const open = document.getElementById('mobile-menu').classList.toggle('open'); this.setAttribute('aria-expanded', String(open))"><i
+                    class="fas fa-bars"></i></button></div>
         </nav>
-        <div id="mobile-menu" class="mobile-menu flex-col gap-4 pb-6 md:hidden">
-            <a href="#projects"
-                class="text-sm text-zinc-400 hover:text-white transition-colors font-medium py-2">Projects</a>
-            <a href="#skills"
-                class="text-sm text-zinc-400 hover:text-white transition-colors font-medium py-2">Skills</a>
-            <a href="#experience"
-                class="text-sm text-zinc-400 hover:text-white transition-colors font-medium py-2">Experience</a>
-            <a href="#education"
-                class="text-sm text-zinc-400 hover:text-white transition-colors font-medium py-2">Education</a>
-            <a href="#about" class="text-sm text-zinc-400 hover:text-white transition-colors font-medium py-2">About</a>
-        </div>
+        <div id="mobile-menu" class="mobile-menu flex-col gap-4 pb-6 lg:hidden"><a href="#projects" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Projects</a><a href="#services" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Services</a><a href="#skills" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Skills</a><a href="#experience" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">Experience</a><a href="#about" class="nav-link text-sm text-zinc-400 hover:text-white transition-colors font-medium">About</a><a href="#contact" class="nav-link text-sm text-zinc-400 py-2">Contact</a></div>
 
         <!-- Hero -->
-        <header class="mt-16 mb-28 opacity-0 animate-[fadeInUp_1s_ease-out_forwards]">
+        <header class="hero-layout mt-12 mb-24 opacity-0 animate-[fadeInUp_1s_ease-out_forwards]"><div class="hero-copy">
             <div
                 class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-sm font-semibold mb-8 tracking-wide shadow-[0_0_15px_rgba(139,92,246,0.15)]">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Open to opportunities
@@ -274,8 +348,7 @@
             <p class="text-xl md:text-2xl text-zinc-300 font-medium mb-6">Full-Stack Developer <span
                     class="text-violet-400">|</span> IT Support Specialist</p>
             <p class="text-zinc-400 text-lg font-light max-w-2xl leading-relaxed mb-10">
-                I build modern, scalable web applications with great user experience. Passionate about solving
-                real-world problems using technology.
+                I build full-stack web applications and business websites, and help keep IT systems running smoothly. From responsive interfaces to APIs and databases, I turn practical needs into useful software.
             </p>
             <div class="flex flex-wrap gap-4">
                 <a href="#projects"
@@ -286,420 +359,100 @@
                     class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/50 text-white font-medium transition-all duration-300 transform hover:-translate-y-0.5">
                     <i class="fas fa-download"></i> Download CV
                 </a>
-                <a href="#contact"
+                <a href="mailto:kyvogithe@gmail.com?subject=Project%20enquiry"
                     class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/50 text-white font-medium transition-all duration-300 transform hover:-translate-y-0.5">
-                    <i class="fas fa-envelope"></i> Contact Me
+                    <i class="fas fa-envelope"></i> Discuss a Project
                 </a>
             </div>
+</div><figure class="hero-portrait"><img src="assets/profile/kevin-githinji.jpg" alt="Kevin Githinji working at a laptop" width="1368" height="912" fetchpriority="high"><figcaption>Kevin Githinji <span>Developer · IT support · Kenya</span></figcaption></figure>
         </header>
 
         <!-- ═══════════ FEATURED PROJECTS ═══════════ -->
-        <section id="projects" class="mb-28 reveal">
-            <h2 class="text-3xl font-bold mb-4 flex items-center gap-4">Featured Projects <div
-                    class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
-            </h2>
-            <p class="text-zinc-400 mb-8 text-sm">Real-world applications I've designed and built</p>
+        <section id="projects" class="mb-24 reveal"><div class="section-intro"><p class="section-kicker">Selected work</p><h2>Projects across platforms and teams</h2><p>Explore the interfaces, modules, and technologies behind my application and website projects.</p></div><div class="project-filters" role="group" aria-label="Filter projects"><button class="filter-btn project-filter active" data-filter="all" aria-pressed="true">All projects</button><button class="filter-btn project-filter" data-filter="platform" aria-pressed="false">Platforms</button><button class="filter-btn project-filter" data-filter="website" aria-pressed="false">Websites</button><button class="filter-btn project-filter" data-filter="company" aria-pressed="false">Company work</button></div><p class="project-privacy">Company projects are presented at module level. Internal business rules, workflows, and source code remain private.</p><div id="projects-grid"><div class="project-group" data-project-group="featured"><div class="project-group-heading"><h3>Featured platforms</h3><p>Selected work across education, assessment, and business applications.</p></div><div class="project-grid"><article class="project-card portfolio-project glass-card" data-category="platform">
+<figure class="project-visual"><a href="assets/projects/school-management-sample.png" target="_blank" rel="noopener noreferrer" aria-label="View School Management Platform image"><img src="assets/projects/school-management-sample.png" alt="School Management Platform — Application screenshot · sample data" loading="lazy" width="1440" height="1000"></a><figcaption>Application screenshot · sample data</figcaption></figure>
+<div class="project-copy"><div class="project-heading"><span class="project-status">In development</span><h4>School Management Platform</h4></div>
+<p class="project-summary">An independent school platform with a React frontend and NestJS API, covering school administration, learning, and reporting.</p><p class="department-focus"><strong>Department focus</strong><span>Academics · School administration · Finance</span></p>
+<div class="module-coverage"><h5>Module coverage</h5><ul><li><span aria-hidden="true">✓</span>Academic administration</li><li><span aria-hidden="true">✓</span>Learning &amp; assessment</li><li><span aria-hidden="true">✓</span>Finance &amp; reporting</li></ul></div>
+<div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">TypeScript</span><span class="tech-tag">NestJS</span><span class="tech-tag">Prisma</span><span class="tech-tag">PostgreSQL</span></div><div class="project-footer"><span class="project-source-label">Local project</span></div></div></article><article class="project-card portfolio-project glass-card" data-category="platform">
+<figure class="project-visual"><a href="assets/projects/darasa-sample.png" target="_blank" rel="noopener noreferrer" aria-label="View Darasa Assessment Platform image"><img src="assets/projects/darasa-sample.png" alt="Darasa Assessment Platform — Application screenshot · sample data" loading="lazy" width="1440" height="1000"></a><figcaption>Application screenshot · sample data</figcaption></figure>
+<div class="project-copy"><div class="project-heading"><span class="project-status">Testing stage</span><h4>Darasa Assessment Platform</h4></div>
+<p class="project-summary">An independent assessment platform combining a React interface, a Node.js API, and background processing.</p><p class="department-focus"><strong>Department focus</strong><span>Teaching · Assessment · School administration</span></p>
+<div class="module-coverage"><h5>Module coverage</h5><ul><li><span aria-hidden="true">✓</span>Assessment authoring</li><li><span aria-hidden="true">✓</span>Learner submissions</li><li><span aria-hidden="true">✓</span>Marking &amp; results</li></ul></div>
+<div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Node.js</span><span class="tech-tag">Express</span><span class="tech-tag">PostgreSQL</span></div><div class="project-footer"><span class="project-source-label">Local project</span></div></div></article><article class="project-card portfolio-project glass-card" data-category="platform">
+<figure class="project-visual"><a href="assets/projects/learning-studio-real.png" target="_blank" rel="noopener noreferrer" aria-label="View Learning Studio image"><img src="assets/projects/learning-studio-real.png" alt="Learning Studio — Application screenshot · public landing page" loading="lazy" width="1440" height="1000"></a><figcaption>Application screenshot · public landing page</figcaption></figure>
+<div class="project-copy"><div class="project-heading"><span class="project-status">In development</span><h4>Learning Studio</h4></div>
+<p class="project-summary">An independent learning platform built across a Next.js frontend, NestJS API, and background worker.</p><p class="department-focus"><strong>Department focus</strong><span>Learning · Teaching · Administration</span></p>
+<div class="module-coverage"><h5>Module coverage</h5><ul><li><span aria-hidden="true">✓</span>Learning content</li><li><span aria-hidden="true">✓</span>Coding projects</li><li><span aria-hidden="true">✓</span>Progress &amp; reports</li></ul></div>
+<div class="project-tech"><span class="tech-tag">Next.js</span><span class="tech-tag">NestJS</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Prisma</span><span class="tech-tag">Redis</span></div><div class="project-footer"><span class="project-source-label">Local project</span></div></div></article><article class="project-card portfolio-project glass-card" data-category="platform">
+<figure class="project-visual"><a href="assets/projects/farmers-system.png" target="_blank" rel="noopener noreferrer" aria-label="View Murang&#x27;a Farmers Support System image"><img src="assets/projects/farmers-system.png" alt="Murang&#x27;a Farmers Support System — Project preview" loading="lazy" width="1440" height="1000"></a><figcaption>Project preview</figcaption></figure>
+<div class="project-copy"><div class="project-heading"><span class="project-status">Independent project</span><h4>Murang&#x27;a Farmers Support System</h4></div>
+<p class="project-summary">A web application that brings farmer information, support requests, and agricultural reporting into one interface.</p><p class="department-focus"><strong>Department focus</strong><span>Agriculture · Field support · Administration</span></p>
+<div class="module-coverage"><h5>Module coverage</h5><ul><li><span aria-hidden="true">✓</span>Farmer registration</li><li><span aria-hidden="true">✓</span>Support requests</li><li><span aria-hidden="true">✓</span>Reporting dashboards</li></ul></div>
+<div class="project-tech"><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">HTML / CSS</span><span class="tech-tag">JavaScript</span></div><div class="project-footer"><a class="project-source" href="https://github.com/Kevin-Githinji/Muranga-farmers-suppport" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a></div></div></article></div></div><div class="project-group" data-project-group="business"><div class="project-group-heading"><h3>Business & operational platforms</h3><p>Applications for different teams, with module coverage described at a high level.</p></div><div class="project-grid"><article class="project-card portfolio-project glass-card" data-category="platform company">
+<figure class="project-visual"><a href="assets/projects/attendance-real.png" target="_blank" rel="noopener noreferrer" aria-label="View Attendance Management Platform image"><img src="assets/projects/attendance-real.png" alt="Attendance Management Platform — Application screenshot · sign-in screen" loading="lazy" width="1440" height="1000"></a><figcaption>Application screenshot · sign-in screen</figcaption></figure>
+<div class="project-copy"><div class="project-heading"><span class="project-status">Company project</span><h4>Attendance Management Platform</h4></div>
+<p class="project-summary">Full-stack application work at SmartBrains Kenya using React, TypeScript, and Supabase.</p><p class="department-focus"><strong>Department focus</strong><span>HR · Administration · Reporting</span></p>
+<div class="module-coverage"><h5>Module coverage</h5><ul><li><span aria-hidden="true">✓</span>Attendance interfaces</li><li><span aria-hidden="true">✓</span>Leave management</li><li><span aria-hidden="true">✓</span>Reporting</li></ul></div>
+<div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">TypeScript</span><span class="tech-tag">TanStack Start</span><span class="tech-tag">Supabase</span><span class="tech-tag">PostgreSQL</span></div><div class="project-footer"><span class="project-source-label">Company work · source private</span></div></div></article><article class="project-card portfolio-project glass-card" data-category="platform company">
+<figure class="project-visual"><a href="assets/projects/asset-tracking-real.png" target="_blank" rel="noopener noreferrer" aria-label="View Asset Tracking Application image"><img src="assets/projects/asset-tracking-real.png" alt="Asset Tracking Application — Application screenshot · sign-in screen" loading="lazy" width="1440" height="1000"></a><figcaption>Application screenshot · sign-in screen</figcaption></figure>
+<div class="project-copy"><div class="project-heading"><span class="project-status">Company project</span><h4>Asset Tracking Application</h4></div>
+<p class="project-summary">Full-stack development at SmartBrains Kenya with a React frontend, Node.js API, and PostgreSQL database.</p><p class="department-focus"><strong>Department focus</strong><span>Operations · Administration · IT</span></p>
+<div class="module-coverage"><h5>Module coverage</h5><ul><li><span aria-hidden="true">✓</span>Asset records</li><li><span aria-hidden="true">✓</span>Access management</li><li><span aria-hidden="true">✓</span>Reporting dashboards</li></ul></div>
+<div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">Node.js</span><span class="tech-tag">Express</span><span class="tech-tag">Prisma</span><span class="tech-tag">PostgreSQL</span></div><div class="project-footer"><span class="project-source-label">Company work · source private</span></div></div></article><article class="project-card portfolio-project glass-card" data-category="platform company">
+<figure class="project-visual"><a href="assets/projects/policy-real.png" target="_blank" rel="noopener noreferrer" aria-label="View Policy Management Application image"><img src="assets/projects/policy-real.png" alt="Policy Management Application — Application screenshot · sign-in screen" loading="lazy" width="1440" height="1000"></a><figcaption>Application screenshot · sign-in screen</figcaption></figure>
+<div class="project-copy"><div class="project-heading"><span class="project-status">Private application</span><h4>Policy Management Application</h4></div>
+<p class="project-summary">A web application built with a React frontend and Laravel API.</p><p class="department-focus"><strong>Department focus</strong><span>Administration · Compliance · IT</span></p>
+<div class="module-coverage"><h5>Module coverage</h5><ul><li><span aria-hidden="true">✓</span>Document management</li><li><span aria-hidden="true">✓</span>User administration</li><li><span aria-hidden="true">✓</span>Access management</li></ul></div>
+<div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">Laravel</span><span class="tech-tag">PHP</span><span class="tech-tag">REST APIs</span></div><div class="project-footer"><span class="project-source-label">Company work · source private</span></div></div></article><article class="project-card portfolio-project glass-card" data-category="platform company">
+<figure class="project-visual"><a href="assets/projects/feedback-real.png" target="_blank" rel="noopener noreferrer" aria-label="View Feedback Application image"><img src="assets/projects/feedback-real.png" alt="Feedback Application — Application screenshot · sample event" loading="lazy" width="1440" height="1000"></a><figcaption>Application screenshot · sample event</figcaption></figure>
+<div class="project-copy"><div class="project-heading"><span class="project-status">Company project</span><h4>Feedback Application</h4></div>
+<p class="project-summary">A React and TypeScript application backed by Supabase, with a public feedback entry page.</p><p class="department-focus"><strong>Department focus</strong><span>Events · Community engagement · Reporting</span></p>
+<div class="module-coverage"><h5>Module coverage</h5><ul><li><span aria-hidden="true">✓</span>Event selection</li><li><span aria-hidden="true">✓</span>Feedback capture</li><li><span aria-hidden="true">✓</span>Reporting interfaces</li></ul></div>
+<div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Supabase</span></div><div class="project-footer"><span class="project-source-label">Company work · source private</span></div></div></article><article class="project-card portfolio-project glass-card" data-category="platform">
+<figure class="project-visual"><a href="assets/projects/pharma-mis.png" target="_blank" rel="noopener noreferrer" aria-label="View Pharmaceutical MIS image"><img src="assets/projects/pharma-mis.png" alt="Pharmaceutical MIS — Project preview" loading="lazy" width="1440" height="1000"></a><figcaption>Project preview</figcaption></figure>
+<div class="project-copy"><div class="project-heading"><span class="project-status">Team project</span><h4>Pharmaceutical MIS</h4></div>
+<p class="project-summary">A team application for pharmaceutical information management, combining a TypeScript frontend with Python services.</p><p class="department-focus"><strong>Department focus</strong><span>Pharmacy · Inventory · Reporting</span></p>
+<div class="module-coverage"><h5>Module coverage</h5><ul><li><span aria-hidden="true">✓</span>Inventory management</li><li><span aria-hidden="true">✓</span>Prescription records</li><li><span aria-hidden="true">✓</span>Sales reporting</li></ul></div>
+<div class="project-tech"><span class="tech-tag">TypeScript</span><span class="tech-tag">Python</span><span class="tech-tag">HTML / CSS</span></div><div class="project-footer"><a class="project-source" href="https://github.com/Kevin-Githinji/pharmaceutical_MIS" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a></div></div></article><article class="project-card portfolio-project glass-card" data-category="platform">
+<figure class="project-visual"><a href="assets/projects/accommodation-sample.png" target="_blank" rel="noopener noreferrer" aria-label="View Accommodation Web Application image"><img src="assets/projects/accommodation-sample.png" alt="Accommodation Web Application — Application screenshot · sample data" loading="lazy" width="1440" height="1000"></a><figcaption>Application screenshot · sample data</figcaption></figure>
+<div class="project-copy"><div class="project-heading"><span class="project-status">Scaffold</span><h4>Accommodation Web Application</h4></div>
+<p class="project-summary">A React and Django redevelopment scaffold for an accommodation application.</p><p class="department-focus"><strong>Department focus</strong><span>Hospitality · Reservations · Administration</span></p>
+<div class="module-coverage"><h5>Module coverage</h5><ul><li><span aria-hidden="true">✓</span>Account interfaces</li><li><span aria-hidden="true">✓</span>Room catalogue</li><li><span aria-hidden="true">✓</span>Booking interfaces</li></ul></div>
+<div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">Django</span><span class="tech-tag">Django REST Framework</span><span class="tech-tag">PostgreSQL</span></div><div class="project-footer"><span class="project-source-label">Local project</span></div></div></article><article class="project-card portfolio-project glass-card" data-category="platform company">
+<div class="project-text-cover"><i class="fas fa-layer-group" aria-hidden="true"></i><span>Interface prototype</span><p>Internal preview kept private</p></div>
+<div class="project-copy"><div class="project-heading"><span class="project-status">Company prototype</span><h4>Intranet Interface Prototype</h4></div>
+<p class="project-summary">Frontend prototype work for SmartBrains Kenya. Module highlights describe interface concepts, rather than production integrations.</p><p class="department-focus"><strong>Department focus</strong><span>Employee experience · Administration · IT</span></p>
+<div class="module-coverage"><h5>Module coverage</h5><ul><li><span aria-hidden="true">✓</span>Application navigation</li><li><span aria-hidden="true">✓</span>Dashboard interfaces</li><li><span aria-hidden="true">✓</span>Support interfaces</li></ul></div>
+<div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Tailwind CSS</span></div><div class="project-footer"><span class="project-source-label">Company work · source private</span></div></div></article></div></div><div class="project-group" data-project-group="website"><div class="project-group-heading"><h3>Websites & client-facing work</h3><p>Responsive websites for businesses and education.</p></div><div class="project-grid"><article class="project-card portfolio-project glass-card" data-category="website">
+<figure class="project-visual"><a href="assets/projects/kelmas-website.png" target="_blank" rel="noopener noreferrer" aria-label="View Kelmas Website image"><img src="assets/projects/kelmas-website.png" alt="Kelmas Website — Project preview" loading="lazy" width="1440" height="1000"></a><figcaption>Project preview</figcaption></figure>
+<div class="project-copy"><div class="project-heading"><span class="project-status">Independent project</span><h4>Kelmas Website</h4></div>
+<p class="project-summary">A PHP website project combining responsive frontend pages and backend integration.</p><p class="department-focus"><strong>Department focus</strong><span>Business communications · Client enquiries</span></p>
+<div class="module-coverage"><h5>Module coverage</h5><ul><li><span aria-hidden="true">✓</span>Website pages</li><li><span aria-hidden="true">✓</span>Responsive interface</li><li><span aria-hidden="true">✓</span>Backend integration</li></ul></div>
+<div class="project-tech"><span class="tech-tag">PHP</span><span class="tech-tag">HTML / CSS</span><span class="tech-tag">JavaScript</span></div><div class="project-footer"><a class="project-source" href="https://github.com/Kevin-Githinji/Kelmas" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a></div></div></article><article class="project-card portfolio-project glass-card" data-category="website">
+<figure class="project-visual"><a href="assets/projects/education-website-real.png" target="_blank" rel="noopener noreferrer" aria-label="View Education Website image"><img src="assets/projects/education-website-real.png" alt="Education Website — Website screenshot" loading="lazy" width="1440" height="1000"></a><figcaption>Website screenshot</figcaption></figure>
+<div class="project-copy"><div class="project-heading"><span class="project-status">Website project</span><h4>Education Website</h4></div>
+<p class="project-summary">A multi-page education website built with HTML, CSS, and JavaScript.</p><p class="department-focus"><strong>Department focus</strong><span>Marketing · Admissions · Education</span></p>
+<div class="module-coverage"><h5>Module coverage</h5><ul><li><span aria-hidden="true">✓</span>Course pages</li><li><span aria-hidden="true">✓</span>Admissions interface</li><li><span aria-hidden="true">✓</span>Contact &amp; enquiries</li></ul></div>
+<div class="project-tech"><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span></div><div class="project-footer"><span class="project-source-label">Local project</span></div></div></article><article class="project-card portfolio-project glass-card" data-category="website company">
+<figure class="project-visual"><a href="assets/projects/uganda-website-real.png" target="_blank" rel="noopener noreferrer" aria-label="View SmartBrains Uganda Website image"><img src="assets/projects/uganda-website-real.png" alt="SmartBrains Uganda Website — Website screenshot" loading="lazy" width="1440" height="1000"></a><figcaption>Website screenshot</figcaption></figure>
+<div class="project-copy"><div class="project-heading"><span class="project-status">Website project</span><h4>SmartBrains Uganda Website</h4></div>
+<p class="project-summary">A public-facing business website presenting educational programmes through a responsive interface.</p><p class="department-focus"><strong>Department focus</strong><span>Marketing · Education · Client enquiries</span></p>
+<div class="module-coverage"><h5>Module coverage</h5><ul><li><span aria-hidden="true">✓</span>Programme pages</li><li><span aria-hidden="true">✓</span>Enquiry links</li><li><span aria-hidden="true">✓</span>Responsive navigation</li></ul></div>
+<div class="project-tech"><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span></div><div class="project-footer"><span class="project-source-label">Company work · source private</span></div></div></article></div></div></div></section>
 
-            <!-- Filter Tabs -->
-            <div class="flex flex-wrap gap-3 mb-10">
-                <button
-                    class="filter-btn active px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-zinc-300 transition-all hover:bg-violet-500/10"
-                    data-filter="all">All Projects</button>
-                <button
-                    class="filter-btn px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-zinc-300 transition-all hover:bg-violet-500/10"
-                    data-filter="web">Web Apps</button>
-                <button
-                    class="filter-btn px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-zinc-300 transition-all hover:bg-violet-500/10"
-                    data-filter="system">Systems</button>
-            </div>
+<section id="services" class="mb-28 reveal"><h2 class="text-3xl font-bold mb-4">How I Can Help</h2><p class="text-zinc-400 mb-8">Available for full-stack developer roles, freelance projects, and IT support opportunities.</p><div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<article class="glass-card p-6"><h3 class="text-lg font-bold mb-3">Business Websites</h3><p class="text-zinc-400 leading-relaxed">Responsive websites and frontend interfaces that make your business clear and easy to contact.</p></article>
+<article class="glass-card p-6"><h3 class="text-lg font-bold mb-3">Full-Stack Applications</h3><p class="text-zinc-400 leading-relaxed">Web applications, dashboards, API integrations, and ongoing application maintenance.</p></article>
+<article class="glass-card p-6"><h3 class="text-lg font-bold mb-3">IT Support</h3><p class="text-zinc-400 leading-relaxed">Hardware and software troubleshooting, user support, network assistance, and technical documentation.</p></article>
+</div><a href="mailto:kyvogithe@gmail.com?subject=Project%20enquiry" class="inline-flex mt-6 text-violet-400 hover:underline">Discuss a project <span aria-hidden="true" class="ml-2">→</span></a></section>
 
-            <div class="space-y-8" id="projects-grid">
+<section id="skills" class="mb-28 reveal"><h2 class="text-3xl font-bold mb-4">Skills</h2><p class="text-zinc-400 mb-8">Technologies used across my application projects, alongside hands-on IT support experience.</p><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="glass-card p-6"><h3 class="text-lg font-bold mb-4">Frontend development</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">React</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Next.js</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">TypeScript</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">JavaScript</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">HTML &amp; CSS</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Tailwind CSS</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">TanStack Start / Query</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Responsive design</span></div></div><div class="glass-card p-6"><h3 class="text-lg font-bold mb-4">Backend development</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Node.js</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Express</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">NestJS</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">PHP / Laravel</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Python / Django</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">REST APIs</span></div></div><div class="glass-card p-6"><h3 class="text-lg font-bold mb-4">Databases &amp; authentication</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">PostgreSQL</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">MySQL</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Prisma</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Supabase</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">JWT authentication</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Role-based access</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">SQL migrations</span></div></div><div class="glass-card p-6"><h3 class="text-lg font-bold mb-4">Tools, testing &amp; deployment</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Git &amp; GitHub</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Vite</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Vitest</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">GitHub Actions</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Linux</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">VPS deployment</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Cloudflare</span></div></div><div class="glass-card p-6"><h3 class="text-lg font-bold mb-4">IT support &amp; networking</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Hardware &amp; software troubleshooting</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Help desk support</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Windows Server</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Active Directory</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Cisco Packet Tracer</span><span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300">Technical documentation</span></div></div></div></section>
 
-                <!-- Project: Asset Dispatch & Tracking System -->
-                <div class="project-card glass-card p-8 group hover:border-violet-500/40 relative overflow-hidden transition-all duration-500 shadow-lg"
-                    data-category="web system">
-                    <div
-                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex flex-col lg:flex-row gap-8">
-                        <div class="lg:w-2/5 rounded-xl overflow-hidden border border-white/10 shadow-lg bg-zinc-950 flex items-center justify-center">
-                            <img src="assets/projects/asset-dispatch.png" alt="Asset Dispatch & Tracking System Mockup"
-                                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex flex-wrap items-center gap-3 mb-3">
-                                <h3 class="text-2xl font-bold">Asset Dispatch & Tracking System</h3>
-                                <span
-                                    class="px-3 py-1 bg-violet-500/10 text-violet-300 text-xs font-semibold rounded-full border border-violet-500/30">⭐ Featured</span>
-                                <span
-                                    class="px-3 py-1 bg-blue-500/10 text-blue-300 text-xs font-semibold rounded-full border border-blue-500/30 flex items-center gap-1"><i class="far fa-clock text-[10px]"></i> Timeline: 3 Weeks</span>
-                                <span
-                                    class="px-3 py-1 bg-zinc-800 text-zinc-400 text-xs font-semibold rounded-full border border-zinc-700 flex items-center gap-1"><i class="fas fa-lock text-[10px]"></i> Private Repo</span>
-                            </div>
-                            <p class="text-zinc-400 mb-4 leading-relaxed"><strong
-                                    class="text-zinc-200">Overview:</strong> Developed and enhanced an enterprise Asset Dispatch & Tracking System designed to manage organizational assets across multiple branches, schools, field teams, and storage locations. The platform enables real-time asset visibility, dispatch management, QR-code-based tracking, user accountability, and comprehensive audit logging.</p>
-                            
-                            <!-- Portfolio Confidentiality Note -->
-                            <p class="text-xs text-zinc-500 italic bg-white/5 p-3 rounded-lg border border-white/5 mb-5">
-                                <i class="fas fa-info-circle text-violet-400 mr-1"></i> Contributed as a Full-Stack Developer to a private enterprise Asset Dispatch & Tracking System. Due to confidentiality and intellectual property restrictions, source code and internal assets are not publicly available. This project description focuses on my technical contributions and the solutions implemented.
-                            </p>
-
-                            <div class="flex flex-wrap gap-2 mb-5">
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-react text-blue-400"></i> React</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-node-js text-emerald-400"></i> Express.js / Node.js</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fas fa-database text-sky-400"></i> PostgreSQL / MySQL</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fas fa-qrcode text-purple-400"></i> QR Code Integration</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fas fa-key text-yellow-500"></i> JWT Auth</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fas fa-code text-indigo-400"></i> REST APIs</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-git-alt text-orange-400"></i> Git & GitHub</span>
-                            </div>
-
-                            <div class="mb-6">
-                                <h4 class="text-sm font-semibold text-violet-300 mb-2">Key Contributions:</h4>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-zinc-400 font-normal">
-                                    <span class="flex items-start gap-2"><i
-                                            class="fas fa-check text-violet-500/80 text-xs mt-1"></i> QR code scanning & GPS metadata logs</span>
-                                    <span class="flex items-start gap-2"><i
-                                            class="fas fa-check text-violet-500/80 text-xs mt-1"></i> Multi-role access control (5 distinct roles)</span>
-                                    <span class="flex items-start gap-2"><i
-                                            class="fas fa-check text-violet-500/80 text-xs mt-1"></i> Asset dispatch & return lifecycle</span>
-                                    <span class="flex items-start gap-2"><i
-                                            class="fas fa-check text-violet-500/80 text-xs mt-1"></i> Centralized audit logging for history</span>
-                                    <span class="flex items-start gap-2"><i
-                                            class="fas fa-check text-violet-500/80 text-xs mt-1"></i> Full asset lifecycle tracking modules</span>
-                                    <span class="flex items-start gap-2"><i
-                                            class="fas fa-check text-violet-500/80 text-xs mt-1"></i> Interactive dashboards for visibility</span>
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap gap-3">
-                                <span class="inline-flex items-center gap-2 text-zinc-500 bg-white/5 border border-zinc-800/80 px-5 py-2.5 rounded-xl font-medium text-sm select-none">
-                                    <i class="fas fa-lock text-zinc-500"></i> Private Repository
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 1: Farmers -->
-                <div class="project-card glass-card p-8 group hover:border-violet-500/40 relative overflow-hidden transition-all duration-500 shadow-lg"
-                    data-category="web">
-                    <div
-                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex flex-col lg:flex-row gap-8">
-                        <div class="lg:w-2/5 rounded-xl overflow-hidden border border-white/10 shadow-lg">
-                            <img src="assets/projects/farmers-system.png" alt="Farmers Support System Dashboard"
-                                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex flex-wrap items-center gap-3 mb-3">
-                                <h3 class="text-2xl font-bold">Murang'a Farmers Support System</h3>
-                                <span
-                                    class="px-3 py-1 bg-emerald-500/10 text-emerald-300 text-xs font-semibold rounded-full border border-emerald-500/30">⭐
-                                    Featured</span>
-                            </div>
-                            <p class="text-zinc-400 mb-4 leading-relaxed"><strong
-                                    class="text-zinc-200">Problem:</strong> Farmers in Murang'a lacked a centralized
-                                platform to access agricultural support services and connect with local government
-                                officers.</p>
-                            <p class="text-zinc-400 mb-5 leading-relaxed"><strong
-                                    class="text-zinc-200">Solution:</strong> Built a comprehensive web platform with
-                                role-based dashboards for farmers, officers, and administrators — enabling seamless
-                                registration, support ticketing, and data management.</p>
-                            <div class="flex flex-wrap gap-2 mb-5">
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-php text-indigo-400"></i> PHP</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fas fa-database text-blue-400"></i> MySQL</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-html5 text-orange-400"></i> HTML/CSS</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-js text-yellow-300"></i> JavaScript</span>
-                            </div>
-                            <div class="mb-6">
-                                <h4 class="text-sm font-semibold text-violet-300 mb-2">Key Features:</h4>
-                                <div class="grid grid-cols-2 gap-2 text-sm text-zinc-400">
-                                    <span class="flex items-center gap-2"><i
-                                            class="fas fa-check text-violet-500/80 text-xs"></i> Multi-role
-                                        dashboards</span>
-                                    <span class="flex items-center gap-2"><i
-                                            class="fas fa-check text-violet-500/80 text-xs"></i> Farmer
-                                        registration</span>
-                                    <span class="flex items-center gap-2"><i
-                                            class="fas fa-check text-violet-500/80 text-xs"></i> Support ticket
-                                        system</span>
-                                    <span class="flex items-center gap-2"><i
-                                            class="fas fa-check text-violet-500/80 text-xs"></i> Admin reporting</span>
-                                </div>
-                            </div>
-                            <a href="https://github.com/Kevin-Githinji/Muranga-farmers-suppport" target="_blank"
-                                class="inline-flex items-center gap-2 text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/50 px-5 py-2.5 rounded-xl font-medium transition-all group/link text-sm">
-                                <i
-                                    class="fab fa-github text-lg text-zinc-300 group-hover/link:text-white transition-colors"></i>
-                                View on GitHub <i
-                                    class="fas fa-arrow-right text-xs ml-1 text-violet-400 group-hover/link:translate-x-1 transition-transform"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: Kelmas -->
-                <div class="project-card glass-card p-8 group hover:border-violet-500/40 relative overflow-hidden transition-all duration-500 shadow-lg"
-                    data-category="web">
-                    <div
-                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex flex-col lg:flex-row gap-8">
-                        <div class="lg:w-2/5 rounded-xl overflow-hidden border border-white/10 shadow-lg">
-                            <img src="assets/projects/kelmas-website.png" alt="Kelmas Website"
-                                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex flex-wrap items-center gap-3 mb-3">
-                                <h3 class="text-2xl font-bold">Kelmas Website</h3>
-                                <span
-                                    class="px-3 py-1 bg-violet-500/10 text-violet-300 text-xs font-semibold rounded-full border border-violet-500/30">Solo
-                                    Project</span>
-                            </div>
-                            <p class="text-zinc-400 mb-4 leading-relaxed"><strong class="text-zinc-200">Role:</strong>
-                                Sole developer — designed, built, and deployed the entire application independently from
-                                concept to completion.</p>
-                            <p class="text-zinc-400 mb-5 leading-relaxed">A full-stack web project demonstrating
-                                end-to-end development capabilities, from responsive UI design to backend logic and
-                                database integration.</p>
-                            <div class="flex flex-wrap gap-2 mb-5">
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-php text-indigo-400"></i> PHP</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-html5 text-orange-400"></i> HTML/CSS</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-js text-yellow-300"></i> JavaScript</span>
-                            </div>
-                            <div class="mb-6">
-                                <h4 class="text-sm font-semibold text-violet-300 mb-2">Key Features:</h4>
-                                <div class="grid grid-cols-2 gap-2 text-sm text-zinc-400">
-                                    <span class="flex items-center gap-2"><i
-                                            class="fas fa-check text-violet-500/80 text-xs"></i> Responsive
-                                        design</span>
-                                    <span class="flex items-center gap-2"><i
-                                            class="fas fa-check text-violet-500/80 text-xs"></i> Full CRUD
-                                        operations</span>
-                                    <span class="flex items-center gap-2"><i
-                                            class="fas fa-check text-violet-500/80 text-xs"></i> Clean UI/UX</span>
-                                    <span class="flex items-center gap-2"><i
-                                            class="fas fa-check text-violet-500/80 text-xs"></i> Backend
-                                        integration</span>
-                                </div>
-                            </div>
-                            <a href="https://github.com/Kevin-Githinji/Kelmas" target="_blank"
-                                class="inline-flex items-center gap-2 text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/50 px-5 py-2.5 rounded-xl font-medium transition-all group/link text-sm">
-                                <i
-                                    class="fab fa-github text-lg text-zinc-300 group-hover/link:text-white transition-colors"></i>
-                                View on GitHub <i
-                                    class="fas fa-arrow-right text-xs ml-1 text-violet-400 group-hover/link:translate-x-1 transition-transform"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: Pharma MIS -->
-                <div class="project-card glass-card p-8 group hover:border-blue-500/40 relative overflow-hidden transition-all duration-500 shadow-lg"
-                    data-category="system">
-                    <div
-                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-sky-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex flex-col lg:flex-row gap-8">
-                        <div class="lg:w-2/5 rounded-xl overflow-hidden border border-white/10 shadow-lg">
-                            <img src="assets/projects/pharma-mis.png" alt="Pharmaceutical MIS Dashboard"
-                                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex flex-wrap items-center gap-3 mb-3">
-                                <h3 class="text-2xl font-bold">Pharmaceutical MIS</h3>
-                                <span
-                                    class="px-3 py-1 bg-blue-500/10 text-blue-300 text-xs font-semibold rounded-full border border-blue-500/30">Team
-                                    Project</span>
-                            </div>
-                            <p class="text-zinc-400 mb-4 leading-relaxed"><strong
-                                    class="text-zinc-200">Problem:</strong> Pharmaceutical operations needed a
-                                structured system for inventory tracking, prescription management, and sales reporting.
-                            </p>
-                            <p class="text-zinc-400 mb-5 leading-relaxed"><strong class="text-zinc-200">Role:</strong>
-                                Collaborated in a team using Git workflows, integrating TypeScript frontend with Python
-                                backend services.</p>
-                            <div class="flex flex-wrap gap-2 mb-5">
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><span
-                                        class="bg-blue-500 text-white text-[9px] font-bold px-1 rounded-sm">TS</span>
-                                    TypeScript</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-python text-yellow-400"></i> Python</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 flex items-center gap-1.5"><i
-                                        class="fab fa-html5 text-orange-400"></i> HTML/CSS</span>
-                            </div>
-                            <div class="mb-6">
-                                <h4 class="text-sm font-semibold text-blue-300 mb-2">Key Features:</h4>
-                                <div class="grid grid-cols-2 gap-2 text-sm text-zinc-400">
-                                    <span class="flex items-center gap-2"><i
-                                            class="fas fa-check text-blue-500/80 text-xs"></i> Inventory
-                                        management</span>
-                                    <span class="flex items-center gap-2"><i
-                                            class="fas fa-check text-blue-500/80 text-xs"></i> Multi-language
-                                        stack</span>
-                                    <span class="flex items-center gap-2"><i
-                                            class="fas fa-check text-blue-500/80 text-xs"></i> Sales reporting</span>
-                                    <span class="flex items-center gap-2"><i
-                                            class="fas fa-check text-blue-500/80 text-xs"></i> Collaborative Git
-                                        workflow</span>
-                                </div>
-                            </div>
-                            <a href="https://github.com/Kevin-Githinji/pharmaceutical_MIS" target="_blank"
-                                class="inline-flex items-center gap-2 text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/50 px-5 py-2.5 rounded-xl font-medium transition-all group/link text-sm">
-                                <i
-                                    class="fab fa-github text-lg text-zinc-300 group-hover/link:text-white transition-colors"></i>
-                                View on GitHub <i
-                                    class="fas fa-arrow-right text-xs ml-1 text-blue-400 group-hover/link:translate-x-1 transition-transform"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════ SKILLS ═══════════ -->
-        <section id="skills" class="mb-28 reveal">
-            <h2 class="text-3xl font-bold mb-4 flex items-center gap-4">Skills <div
-                    class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
-            </h2>
-            <p class="text-zinc-400 mb-10 text-sm">Technologies and tools I work with</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Frontend -->
-                <div class="glass-card p-6 hover:border-violet-500/30 transition-all duration-300 hover:-translate-y-1">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div
-                            class="w-10 h-10 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <h3 class="text-lg font-bold">Frontend</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">HTML5</span>
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">CSS3</span>
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">JavaScript</span>
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Tailwind
-                            CSS</span>
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Responsive
-                            Design</span>
-                    </div>
-                </div>
-                <!-- Backend -->
-                <div class="glass-card p-6 hover:border-blue-500/30 transition-all duration-300 hover:-translate-y-1">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div
-                            class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3 class="text-lg font-bold">Backend</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">PHP</span>
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Python</span>
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">TypeScript</span>
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">MySQL</span>
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">REST
-                            APIs</span>
-                    </div>
-                </div>
-                <!-- Tools -->
-                <div
-                    class="glass-card p-6 hover:border-emerald-500/30 transition-all duration-300 hover:-translate-y-1">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div
-                            class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h3 class="text-lg font-bold">Tools & Platforms</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Git
-                            & GitHub</span>
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">VS
-                            Code</span>
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Linux</span>
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Windows
-                            Server</span>
-                    </div>
-                </div>
-                <!-- IT & Networking -->
-                <div class="glass-card p-6 hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-1">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div
-                            class="w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <h3 class="text-lg font-bold">IT & Networking</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Cisco
-                            Packet Tracer</span>
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Active
-                            Directory</span>
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Help
-                            Desk Support</span>
-                        <span
-                            class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-zinc-300 font-medium">Hardware
-                            Troubleshooting</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════ EXPERIENCE ═══════════ -->
-        <section id="experience" class="mb-28 reveal">
+<section id="experience" class="mb-28 reveal">
             <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">Experience <div
                     class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
             </h2>
+<article class="glass-card p-8 mb-8"><span class="text-sm text-violet-400">Current company</span><h3 class="text-2xl font-bold mt-2">Full-Stack Development</h3><p class="text-xl text-violet-300 mt-2">SmartBrains Kenya</p><p class="text-zinc-400 leading-relaxed mt-4">I work on web applications across frontend interfaces, backend APIs, and database integration. Technologies used include React, TypeScript, Node.js, PostgreSQL, and Supabase.</p><p class="text-sm text-zinc-500 mt-4">Company projects are summarized at a technology level. Internal processes, source code, and business logic are kept private.</p></article>
             <div
                 class="glass-card p-8 md:p-10 group hover:border-violet-500/40 relative overflow-hidden transition-all duration-500 shadow-lg">
                 <div
@@ -770,8 +523,47 @@
             </div>
         </section>
 
-        <!-- ═══════════ EDUCATION & CERTIFICATIONS ═══════════ -->
-        <section id="education" class="mb-28 reveal">
+<section id="about" class="mb-28 reveal">
+            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">About Me <div
+                    class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
+            </h2>
+            <div class="glass-card p-8 md:p-10 border-t border-t-violet-500/20">
+                <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
+                    <img src="assets/profile/kevin-githinji.jpg" alt="Kevin Githinji" width="112" height="112" loading="lazy" class="about-portrait">
+                    <div class="flex-1 text-center md:text-left">
+                        <p class="text-zinc-300 text-lg leading-relaxed mb-4">I studied <strong
+                                class="text-white">BSc Information Technology</strong> at Murang'a University of
+                            Technology with a passion for building clean, functional software and keeping systems
+                            running smoothly.</p>
+                        <p class="text-zinc-400 leading-relaxed mb-6">My attachment at <strong
+                                class="text-zinc-200">Maragua Level 4 Hospital</strong> gave me real-world exposure to
+                            healthcare IT — from troubleshooting critical systems to managing patient records securely.
+                            I bridge the gap between users and technology with both development skills and hands-on IT
+                            support experience.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                            <div class="flex items-center gap-3 text-zinc-400"><i
+                                    class="fas fa-bolt text-violet-400"></i> Fast & adaptive learner</div>
+                            <div class="flex items-center gap-3 text-zinc-400"><i
+                                    class="fas fa-eye text-violet-400"></i> Strong attention to detail</div>
+                            <div class="flex items-center gap-3 text-zinc-400"><i
+                                    class="fas fa-puzzle-piece text-violet-400"></i> Problem-solving mindset</div>
+                            <div class="flex items-center gap-3 text-zinc-400"><i
+                                    class="fas fa-users text-violet-400"></i> Excellent team player</div>
+                        </div>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                            <div class="flex items-center gap-2 text-sm text-zinc-400"><i
+                                    class="fas fa-map-marker-alt text-violet-400"></i> Nairobi, Kenya</div>
+                            <div class="flex items-center gap-2 text-sm text-zinc-400"><i
+                                    class="fas fa-envelope text-violet-400"></i> kyvogithe@gmail.com</div>
+                            <div class="flex items-center gap-2 text-sm text-zinc-400"><i
+                                    class="fas fa-phone text-violet-400"></i> +254 743 661 514</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<section id="education" class="mb-28 reveal">
             <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">Education & Certifications <div
                     class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
             </h2>
@@ -798,7 +590,7 @@
                             </div>
                             <div
                                 class="px-4 py-2 bg-white/5 rounded-full border border-white/10 text-sm font-semibold text-zinc-300 shrink-0">
-                                Expected 2026</div>
+                                BSc IT</div>
                         </div>
                         <div class="mt-5 p-5 rounded-xl bg-black/20 border border-white/5">
                             <h4 class="text-sm font-semibold mb-3 text-zinc-200">Relevant Coursework:</h4>
@@ -821,8 +613,7 @@
 
             <!-- Certifications Grid -->
             <h3 class="text-xl font-bold mb-2 mt-10">Certifications</h3>
-            <p class="text-zinc-400 mb-6 text-sm"><i class="fas fa-info-circle text-violet-400 mr-2"></i>Industry
-                certifications & Cisco Skills for All credentials</p>
+            <p class="text-zinc-400 mb-6 text-sm"><i class="fas fa-info-circle text-violet-400 mr-2"></i>Course credentials and certification study goals</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div class="glass-card p-4 flex items-center gap-3 hover:border-violet-500/40 transition-all group">
                     <div
@@ -841,7 +632,7 @@
                     </div>
                     <div>
                         <h4 class="text-sm font-bold text-zinc-200">CompTIA A+</h4>
-                        <p class="text-zinc-400 text-xs">Expected 2026</p>
+                        <p class="text-zinc-400 text-xs">Study goal</p>
                     </div>
                 </div>
                 <div class="glass-card p-4 flex items-center gap-3 hover:border-red-500/40 transition-all group">
@@ -937,51 +728,7 @@
             </div>
         </section>
 
-        <!-- ═══════════ ABOUT ME ═══════════ -->
-        <section id="about" class="mb-28 reveal">
-            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">About Me <div
-                    class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
-            </h2>
-            <div class="glass-card p-8 md:p-10 border-t border-t-violet-500/20">
-                <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
-                    <div
-                        class="w-28 h-28 rounded-full bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center shrink-0 text-4xl font-bold shadow-[0_0_30px_rgba(139,92,246,0.3)]">
-                        KG</div>
-                    <div class="flex-1 text-center md:text-left">
-                        <p class="text-zinc-300 text-lg leading-relaxed mb-4">I'm a pre-graduate <strong
-                                class="text-white">BSc Information Technology</strong> student at Murang'a University of
-                            Technology with a passion for building clean, functional software and keeping systems
-                            running smoothly.</p>
-                        <p class="text-zinc-400 leading-relaxed mb-6">My attachment at <strong
-                                class="text-zinc-200">Maragua Level 4 Hospital</strong> gave me real-world exposure to
-                            healthcare IT — from troubleshooting critical systems to managing patient records securely.
-                            I bridge the gap between users and technology with both development skills and hands-on IT
-                            support experience.</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                            <div class="flex items-center gap-3 text-zinc-400"><i
-                                    class="fas fa-bolt text-violet-400"></i> Fast & adaptive learner</div>
-                            <div class="flex items-center gap-3 text-zinc-400"><i
-                                    class="fas fa-eye text-violet-400"></i> Strong attention to detail</div>
-                            <div class="flex items-center gap-3 text-zinc-400"><i
-                                    class="fas fa-puzzle-piece text-violet-400"></i> Problem-solving mindset</div>
-                            <div class="flex items-center gap-3 text-zinc-400"><i
-                                    class="fas fa-users text-violet-400"></i> Excellent team player</div>
-                        </div>
-                        <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                            <div class="flex items-center gap-2 text-sm text-zinc-400"><i
-                                    class="fas fa-map-marker-alt text-violet-400"></i> Nairobi, Kenya</div>
-                            <div class="flex items-center gap-2 text-sm text-zinc-400"><i
-                                    class="fas fa-envelope text-violet-400"></i> kyvogithe@gmail.com</div>
-                            <div class="flex items-center gap-2 text-sm text-zinc-400"><i
-                                    class="fas fa-phone text-violet-400"></i> +254 743 661 514</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════ CONTACT CTA ═══════════ -->
-        <section id="contact" class="reveal mb-12">
+<section id="contact" class="reveal mb-12">
             <div
                 class="glass-card p-12 md:p-16 text-center relative overflow-hidden bg-gradient-to-br from-violet-900/10 to-blue-900/10 border-violet-500/20 shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(139,92,246,0.1)]">
                 <div
@@ -993,16 +740,14 @@
                         <i class="fas fa-handshake text-3xl text-violet-400"></i>
                     </div>
                     <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Build Together</h2>
-                    <p class="text-zinc-400 text-lg mb-4 max-w-2xl mx-auto">I'm currently seeking an internship, job or
-                        freelance opportunity where I can bring value to a team while expanding my skillset.</p>
+                    <p class="text-zinc-400 text-lg mb-4 max-w-2xl mx-auto">Looking for a full-stack developer, a freelance partner, or IT support? Get in touch to discuss a role or a project.</p>
                     <p class="text-emerald-400 text-sm font-semibold mb-10 flex items-center justify-center gap-2"><span
-                            class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Available for internships, full-time jobs
-                        & freelance</p>
+                            class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Open to developer roles, freelance projects & IT support</p>
                     <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-                        <a href="https://github.com/Kevin-Githinji" target="_blank"
+                        <a href="https://github.com/Kevin-Githinji" target="_blank" rel="noopener noreferrer"
                             class="px-6 py-3.5 rounded-full bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 hover:bg-zinc-800 transition-all font-medium flex items-center justify-center gap-2"><i
                                 class="fab fa-github text-lg"></i> GitHub</a>
-                        <a href="https://linkedin.com/in/kevin-githinji" target="_blank"
+                        <a href="https://linkedin.com/in/kevin-githinji" target="_blank" rel="noopener noreferrer"
                             class="px-6 py-3.5 rounded-full bg-zinc-900 border border-zinc-800 hover:border-blue-500/50 hover:bg-zinc-800 transition-all font-medium flex items-center justify-center gap-2"><i
                                 class="fab fa-linkedin text-lg text-blue-400"></i> LinkedIn</a>
                         <a href="tel:+254743661514"
@@ -1026,7 +771,7 @@
     </div>
 
     <!-- Back to Top -->
-    <a href="#" id="back-to-top"
+    <a href="#" id="back-to-top" aria-label="Back to top"
         class="back-to-top w-12 h-12 rounded-full bg-violet-600 hover:bg-violet-500 text-white flex items-center justify-center shadow-[0_0_15px_rgba(124,58,237,0.4)] transition-all"><i
             class="fas fa-arrow-up"></i></a>
 
@@ -1071,19 +816,20 @@
         // Project Filter
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+                document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+                btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
                 const filter = btn.dataset.filter;
                 document.querySelectorAll('.project-card').forEach(card => {
                     const categories = card.dataset.category ? card.dataset.category.split(' ') : [];
                     card.classList.toggle('hidden-card', filter !== 'all' && !categories.includes(filter));
                 });
+                document.querySelectorAll('[data-project-group]').forEach(group => { group.hidden = !group.querySelector('.project-card:not(.hidden-card)'); });
             });
         });
 
         // Mobile menu close on link click
         document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
+            link.addEventListener('click', () => { document.getElementById('mobile-menu').classList.remove('open'); document.getElementById('mobile-toggle').setAttribute('aria-expanded', 'false'); });
         });
     </script>
 </body>
